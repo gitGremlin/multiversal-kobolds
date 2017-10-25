@@ -3,23 +3,43 @@
   "version": "0.0.1",
   "description": "clicker game about the most adorable critters in the multiverse!",
   "scripts": {
-    "build": "echo 'where is the build file, chief?'",
-    "test": "echo 'where are all the tests, chief?'"
+    "build": "webpack --config webpack.prod.config.js",
+    "dev": "webpack-dev-server --hot --inline",
+    "lint": "eslint src/**",
+    "review": "npm run lint",
+    "start": "npm run build && NODE_ENV=production node server.js"
   },
   "author": "Mo Shawwa",
-
   "keywords": [
     "clicker",
     "kobold",
     "dragon"
   ],
-
-  "devDependencies": {},
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "css-loader": "^0.28.7",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
     "material-ui": "^1.0.0-beta.18",
-    "react": "^16.0.0"
+    "material-ui-icons": "^1.0.0-beta.17",
+    "node-sass": "^4.5.3",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1"
   },
-
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.9.3",
+    "webpack-hot-middleware": "^2.20.0"
+  },
   "bugs": {
     "url": "https://github.com/FTgremlin/multiversal-kobolds/issues"
   },
