@@ -3,19 +3,23 @@
   "version": "0.0.1",
   "description": "clicker game about the most adorable critters in the multiverse!",
   "scripts": {
-    "build": "echo 'where is the build file, chief?'"
+    "build": "echo 'where is the build file, chief?'",
     "test": "echo 'where are all the tests, chief?'"
   },
+  "author": "Mo Shawwa",
+
   "keywords": [
     "clicker",
     "kobold",
-    "D&D"
+    "dragon"
   ],
-  "author": "Mo Shawwa",
-  "devDependencies": {
-  },
+
+  "devDependencies": {},
   "dependencies": {
+    "material-ui": "^1.0.0-beta.18",
+    "react": "^16.0.0"
   },
+
   "bugs": {
     "url": "https://github.com/FTgremlin/multiversal-kobolds/issues"
   },
