@@ -4,7 +4,7 @@ require('babel-polyfill');
 
 module.exports = {
   entry: [
-    './src/index'
+    './src/client/entry'
   ],
   module: {
     loaders: [
@@ -17,7 +17,7 @@ module.exports = {
       path.resolve('./'),
       path.resolve('./node_modules'),
     ],
-    extensions: ['.js','.scss'],
+    extensions: ['.js', '.scss'],
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -26,7 +26,7 @@ module.exports = {
   },
   devtool: 'cheap-eval-source-map',
   devServer: {
-    contentBase: './dist',
+    contentBase: './src/client/',
     hot: true
   },
   plugins: [

@@ -1,7 +1,8 @@
-/node_modules
+node_modules/
 .idea/
-/coverage
-dist/bundle.js
+dist/
+build/
+coverage/
 .env
 *.log
 yarn.lock
