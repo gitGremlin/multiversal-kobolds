@@ -1,5 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import KoboldBar from '../shared/components/KoboldBar';
+import Index from '../shared/handlers/Index';
 
-render(<KoboldBar />, document.getElementById('main'));
+render(<Index />, document.getElementById('main'));

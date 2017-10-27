@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 require('babel-polyfill');
 
 module.exports = {
@@ -30,6 +31,11 @@ module.exports = {
     hot: true
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: '../dist/index.html',
+      template: 'src/client/index.html'
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
