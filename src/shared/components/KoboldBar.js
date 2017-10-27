@@ -1,9 +1,5 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-
-import 'src/client/styles/main.scss'
+import { AppBar, Toolbar, Typography } from 'material-ui';
 
 function KoboldBar() {
   return (
