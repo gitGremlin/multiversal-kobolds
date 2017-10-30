@@ -1,37 +1,26 @@
+import {observer} from 'mobx-react'
 import React from 'react';
-import PropTypes from 'prop-types';
+import koboldActions from '../actions/KoboldActions'
 import store from '../stores/KoboldStore'
-import {withStyles} from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import PersonAddIcon from 'material-ui-icons/PersonAdd';
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-});
-
-function KoboldHatch(props) {
-  const { classes } = props;
-  function consoleLogMe() {
-    store.koboldCounter++;
+@observer
+export default class KoboldHatch extends React.Component {
+  handleOnHatchEgg = () => {
+    koboldActions.hatchKoboldManual();
     console.log("Kobolds Birthed: " + store.koboldCounter)
-  }
+  };
 
-  return (
+  render() {
+    return(
     <div>
       <IconButton
-        onClick={consoleLogMe}
-        className={classes.button}
+        onClick={this.handleOnHatchEgg}
         aria-label="Hatch Egg">
         <PersonAddIcon/>
       </IconButton>
     </div>
-  );
+    )
+  }
 }
-
-KoboldHatch.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(KoboldHatch);

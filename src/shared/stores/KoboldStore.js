@@ -1,13 +1,16 @@
-import {observable, autorun, toJS} from "mobx";
+import {observable} from 'mobx';
 
 class KoboldStore {
   // UI
-  @observable koboldCounter;
+  @observable koboldCounter = 0;
 
   resetStore(){
     this.koboldCounter=0
   }
+
+  retrieveKoboldCount() {
+    return this.koboldCounter
+  }
 }
 
-let store = new KoboldStore;
-export default store;
+export default new KoboldStore;
