@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import store from '../stores/KoboldStore'
 import KoboldBar from '../components/KoboldBar';
 import KoboldHatch from '../components/KoboldHatch';

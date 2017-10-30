@@ -21,8 +21,7 @@ module.exports = {
     extensions: ['.js', '.scss'],
   },
   output: {
-    path: path.join(__dirname, '/dist'),
-    publicPath: './',
+    path: __dirname,
     filename: 'bundle.js'
   },
   devtool: 'cheap-eval-source-map',
@@ -33,7 +32,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'My App',
-      filename: '../dist/index.html',
+      filename: 'index.html',
       template: 'src/client/index.html'
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
