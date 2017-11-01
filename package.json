@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "clicker game about the most adorable critters in the multiverse!",
   "scripts": {
-    "precommit": "npm run build",
+    "precommit": "echo precommit",
     "build": "webpack --config webpack.config.js",
     "dev": "npm run build && webpack-dev-server --hot --inline",
     "lint": "eslint src/**",
