@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react'
 import React from 'react';
-import koboldActions from '../actions/KoboldActions'
+import action from '../actions/KoboldActions'
 import store from '../stores/KoboldStore'
 import IconButton from 'material-ui/IconButton';
 import PersonAddIcon from 'material-ui-icons/PersonAdd';
@@ -8,12 +8,12 @@ import PersonAddIcon from 'material-ui-icons/PersonAdd';
 @observer
 export default class KoboldHatch extends React.Component {
   handleOnHatchEgg = () => {
-    koboldActions.hatchKoboldManual();
-    console.log("Kobolds Birthed: " + store.koboldCounter)
+    action.hatchKoboldManual();
   };
 
   render() {
-    const disabled = store.getEggCount()==0
+    const disabled = store.getEggCount()===0;
+
     return(
     <div>
       <IconButton
