@@ -1,11 +1,15 @@
 import {observable} from 'mobx';
 
 class KoboldStore {
-  // UI
+  // Stage One Kobolds
   @observable koboldCounter = 0;
+  @observable eggCounter = 10;
 
-  retrieveKoboldCount() {
+  getKoboldCount() {
     return this.koboldCounter
+  }
+  getEggCount() {
+    return this.eggCounter
   }
 }
 

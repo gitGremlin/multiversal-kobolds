@@ -13,9 +13,11 @@ export default class KoboldHatch extends React.Component {
   };
 
   render() {
+    const disabled = store.getEggCount()==0
     return(
     <div>
       <IconButton
+        disabled={disabled}
         onClick={this.handleOnHatchEgg}
         aria-label="Hatch Egg">
         <PersonAddIcon/>

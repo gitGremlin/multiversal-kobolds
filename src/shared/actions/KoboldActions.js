@@ -6,7 +6,9 @@ class KoboldActions {
   constructor() {}
 
   @action hatchKoboldManual() {
-    store.koboldCounter++
+    if(store.eggCounter>0)
+      store.eggCounter--
+      store.koboldCounter++
   }
 }
 
