@@ -1,6 +1,6 @@
-import {observer} from 'mobx-react'
+import {observer} from 'mobx-react';
 import React from 'react';
-import { AppBar, Toolbar, Typography } from 'material-ui';
+import {AppBar, Toolbar, Typography} from 'material-ui';
 
 @observer
 export default class KoboldBar extends React.Component {
@@ -10,7 +10,7 @@ export default class KoboldBar extends React.Component {
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography type="title" color="inherit">
-              Multiversal Kobolds
+              Kobold Nest
             </Typography>
           </Toolbar>
         </AppBar>
