@@ -2,14 +2,14 @@ import {observable} from 'mobx';
 
 class KoboldStore {
   // Egg Control
-  @observable eggsPerSecond = 0.2;
+  @observable eggsPerTick = 0.2;
   @observable eggCount = 10;
 
   // Kobold Control
   @observable koboldCount = 0;
 
-  getEggsPerSecond() {
-    return this.eggsPerSecond;
+  getEggsPerTick() {
+    return this.eggsPerTick;
   }
 
   getEggCount() {

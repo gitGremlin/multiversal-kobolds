@@ -5,5 +5,5 @@ let ticksProduced = 0;
 
 export default function () {
   ticksProduced++;
-  action.produceEgg(store.getEggsPerSecond());
+  action.produceEgg(store.getEggsPerTick());
 }
