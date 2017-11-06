@@ -1,32 +1,26 @@
 import {observer} from 'mobx-react';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {Typography} from 'material-ui';
 import store from '../stores/KoboldStore';
 
 @observer
 export default class KoboldStats extends Component {
   render() {
     const koboldCount = store.getKoboldCount();
-    const eggCount = store.getEggCount();
     const koboldEmployedCount = store.getKoboldEmployedCount();
     const koboldUnemployedCount = koboldCount - koboldEmployedCount;
-    const koboldsPerSecond = store.getKoboldsPerTick() *4;
-    const eggsPerSecond = store.getEggsPerTick()*4;
 
     return (
       <div>
-        <h1>Totals</h1>
-        <div>
-          Kobolds Birthed: {koboldCount} (+ {koboldsPerSecond}/s)
-        </div>
-        <div>
-          Eggs Available: {eggCount} (+ {eggsPerSecond}/s)
-        </div>
-        <div>
+        <Typography type="headline" component="h1">
+          Totals
+        </Typography>
+        <Typography type="body1" component="p">
           Employed Kobolds: {koboldEmployedCount}
-        </div>
-        <div>
+        </Typography>
+        <Typography type="body1" component="p">
           Available Kobolds {koboldUnemployedCount}
-        </div>
+        </Typography>
       </div>
     );
   }

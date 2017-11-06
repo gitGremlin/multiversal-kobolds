@@ -12,9 +12,10 @@ export default class KoboldBreeding extends Component {
   };
 
   render() {
-    const hidden = !store.getVocationTime('breeding');
+    const hidden = store.getKoboldCount() < 2;
+
     const style = {
-      padding: 5,
+      padding: 16,
       margin: 10,
       width: 300,
       float: 'left'
@@ -29,13 +30,27 @@ export default class KoboldBreeding extends Component {
     const reduceDisabledFemale = femaleCount === 0;
     const reduceDisabledWetnurse = wetnurseCount === 0;
 
+    const eggCount = store.getEggCount();
+    const eggsPerSecond = store.getEggsPerTick() * 4;
+    const koboldCount = store.getKoboldCount();
+    const koboldsPerSecond = store.getKoboldsPerTick() * 4;
+
 
     return (
       <Paper elevation={4} style={style} hidden={hidden}>
         <div>
-          <Typography type="headline" component="h3" align="center">
-            Breeding Programme
-          </Typography>
+          <div>
+            <Typography type="headline" component="h3" align="center">
+              Breeding Programme
+            </Typography>
+            <Typography type="body1" component="p">
+              Eggs Available: {eggCount} (+ {eggsPerSecond}/s)
+            </Typography>
+            <Typography type="body1" component="p">
+              Kobolds Birthed: {koboldCount} (+ {koboldsPerSecond}/s)
+            </Typography>
+            <hr/>
+          </div>
           <Typography type="body1" component="p">
             <IconButton
               disabled={reduceDisabledMale}

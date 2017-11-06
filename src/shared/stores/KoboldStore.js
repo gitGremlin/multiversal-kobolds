@@ -22,6 +22,8 @@ class KoboldStore {
 
   // RAD Control
   @observable radScientistCount = 0;
+  @observable radScienceCount = [0,100];
+  @observable radSciencePerTick = 0;
 
   getEggsPerTick() {
     return this.eggsPerTick;
@@ -78,6 +80,13 @@ class KoboldStore {
         return this.radScientistCount;
         break;
     }
+  }
+  getRADScienceCount(int) {
+    return Math.floor(this.radScienceCount[int]);
+  }
+
+  getRADSciencePerTick() {
+    return this.radSciencePerTick;
   }
 }
 

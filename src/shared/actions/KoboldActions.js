@@ -37,6 +37,15 @@ class KoboldActions {
   }
 
   @action
+  produceScience(number) {
+    if (store.getRADScienceCount(0) < store.getRADScienceCount(1)) {
+      const min = store.getRADScienceCount(1) - store.getRADScienceCount(0);
+      store.radScienceCount[0] += Math.min(number, min)
+    }
+
+  }
+
+  @action
   modifyBreeding(type, number) {
     switch (type) {
       case 'male' :
