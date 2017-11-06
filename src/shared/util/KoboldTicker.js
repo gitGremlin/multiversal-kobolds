@@ -8,7 +8,7 @@ function setVocations() {
     store.breedingTime = true;
   }
   if (store.koboldCount >=10) {
-    store.scienceTime = true;
+    store.radTime = true;
   }
 }
 

@@ -53,13 +53,10 @@ class KoboldActions {
   }
 
   @action
-  modifyThinking(type, number) {
+  modifyRAD(type, number) {
     switch (type) {
       case 'scientist' :
-        store.thinkingScientistCount += number;
-        break;
-      case 'wizard' :
-        store.thinkingWizardCount += number;
+        store.radScientistCount += number;
         break;
     }
     store.koboldEmployedCount += number;

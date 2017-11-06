@@ -6,13 +6,13 @@ import {Paper, Typography, IconButton} from 'material-ui';
 import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
 
 @observer
-export default class KoboldThinking extends Component {
+export default class KoboldRAD extends Component {
   handleOnClick = (type, number) => {
-    action.modifyThinking(type, number);
+    action.modifyRAD(type, number);
   };
 
   render() {
-    const hidden = !store.getVocationTime('science');
+    const hidden = !store.getVocationTime('rad');
     const style = {
       padding: 5,
       margin: 10,
@@ -20,19 +20,17 @@ export default class KoboldThinking extends Component {
       float: 'left'
     };
 
-    const scientistCount = store.getThinkingCount('scientist');
-    const wizardCount = store.getThinkingCount('wizard');
+    const scientistCount = store.getRADCount('scientist');
 
     const addDisabled = (store.getKoboldEmployedCount() >= store.getKoboldCount());
     const reduceDisabledScientist = scientistCount === 0;
-    const reduceDisabledWizard = wizardCount === 0;
 
 
     return (
       <Paper elevation={4} style={style} hidden={hidden}>
-
+        <div>
         <Typography type="headline" component="h3" align="center">
-          Thinking Studies
+          Research & Development
         </Typography>
           <Typography type="body1" component="p">
           <IconButton
@@ -51,23 +49,7 @@ export default class KoboldThinking extends Component {
           </IconButton>
           Scientists: {scientistCount}
           </Typography>
-        <Typography type="body1" component="p">
-          <IconButton
-            disabled={reduceDisabledWizard}
-            onClick={() => {
-              this.handleOnClick('wizard', -1);
-            }}>
-            <IndeterminateCheckBox/>
-          </IconButton>
-          <IconButton
-            disabled={addDisabled}
-            onClick={() => {
-              this.handleOnClick('wizard', +1);
-            }}>
-            <AddBox/>
-          </IconButton>
-          Wizards: {wizardCount}
-        </Typography>
+        </div>
       </Paper>
     );
   }

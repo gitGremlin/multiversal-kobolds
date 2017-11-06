@@ -12,7 +12,7 @@ class KoboldStore {
 
   // Vocation Control
   @observable breedingTime = false;
-  @observable scienceTime = false;
+  @observable radTime = false;
 
   // Breeding Control
   @observable breedingMaleCount = 0;
@@ -20,9 +20,8 @@ class KoboldStore {
   @observable breedingWetnurseCount = 0;
   @observable breedingHatchProgress = 0;
 
-  // Thinking Control
-  @observable thinkingScientistCount = 0;
-  @observable thinkingWizardCount = 0;
+  // RAD Control
+  @observable radScientistCount = 0;
 
   getEggsPerTick() {
     return this.eggsPerTick;
@@ -49,8 +48,8 @@ class KoboldStore {
       case 'breeding' :
         return this.breedingTime;
         break;
-      case 'science' :
-        return this.scienceTime;
+      case 'rad' :
+        return this.radTime;
         break;
     }
   }
@@ -73,13 +72,10 @@ class KoboldStore {
     return this.breedingHatchProgress;
   }
 
-  getThinkingCount(type) {
+  getRADCount(type) {
     switch (type) {
       case 'scientist' :
-        return this.thinkingScientistCount;
-        break;
-      case 'wizard' :
-        return this.thinkingWizardCount;
+        return this.radScientistCount;
         break;
     }
   }

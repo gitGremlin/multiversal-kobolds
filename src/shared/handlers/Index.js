@@ -7,7 +7,7 @@ import KoboldBar from '../components/KoboldBar';
 import KoboldHatch from '../components/KoboldHatch';
 import KoboldStats from '../components/KoboldStats';
 import KoboldBreeding from '../components/vocations/KoboldBreeding';
-import KoboldThinking from '../components/vocations/KoboldThinking';
+import KoboldRAD from '../components/vocations/KoboldRAD';
 
 const theme = createMuiTheme({
 //   palette: {
@@ -43,7 +43,7 @@ export default class Index extends React.Component {
           <hr/>
           <div>
             <KoboldBreeding/>
-            <KoboldThinking/>
+            <KoboldRAD/>
           </div>
         </div>
       </MuiThemeProvider>
