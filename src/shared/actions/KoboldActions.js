@@ -27,7 +27,6 @@ class KoboldActions {
   produceKobold(number) {
     if (store.getEggCount() >=1) {
       store.breedingHatchProgress += number;
-      console.log(store.getBreedingHatchProgress());
       if (store.getBreedingHatchProgress() >= 1) {
         let koboldsToHatch = Math.min(store.getEggCount(), Math.floor(store.getBreedingHatchProgress()));
         store.koboldCount += koboldsToHatch;

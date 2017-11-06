@@ -15,8 +15,7 @@ export default class KoboldBreeding extends React.Component {
     const hidden = !store.getBreedingTime();
     const style = {
       padding: 2,
-      width: "30%",
-      height: "30%"
+      width: 300
     };
 
     const maleCount = store.getBreedingMaleCount();
