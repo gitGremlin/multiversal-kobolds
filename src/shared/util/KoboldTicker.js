@@ -7,18 +7,21 @@ function setVocations() {
   if (store.koboldCount >= 2) {
     store.breedingTime = true;
   }
+  if (store.koboldCount >=10) {
+    store.scienceTime = true;
+  }
 }
 
 function setBreedingStats() {
-  if (store.getBreedingFemaleCount() > 0 && store.getBreedingMaleCount() > 0) {
-    const maleMod = store.getBreedingMaleCount();
-    const femaleMod = store.getBreedingFemaleCount() / 4;
+  if (store.getBreedingCount('female') > 0 && store.getBreedingCount('male') > 0) {
+    const maleMod = store.getBreedingCount('male');
+    const femaleMod = store.getBreedingCount('female') / 4;
 
     store.eggsPerTick = (Math.min(maleMod, femaleMod)) / 80;
   } else {
     store.eggsPerTick = 0;
   }
-  store.koboldsPerTick = store.getBreedingWetnurseCount()/200;
+  store.koboldsPerTick = store.getBreedingCount('wetnurse')/200;
 }
 
 function doProduce() {

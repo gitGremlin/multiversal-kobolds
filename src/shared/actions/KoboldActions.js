@@ -51,6 +51,19 @@ class KoboldActions {
     }
     store.koboldEmployedCount += number;
   }
+
+  @action
+  modifyThinking(type, number) {
+    switch (type) {
+      case 'scientist' :
+        store.thinkingScientistCount += number;
+        break;
+      case 'wizard' :
+        store.thinkingWizardCount += number;
+        break;
+    }
+    store.koboldEmployedCount += number;
+  }
 }
 
 export default new KoboldActions;

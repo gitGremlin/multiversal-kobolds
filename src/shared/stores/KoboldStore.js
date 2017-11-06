@@ -12,12 +12,17 @@ class KoboldStore {
 
   // Vocation Control
   @observable breedingTime = false;
+  @observable scienceTime = false;
 
   // Breeding Control
   @observable breedingMaleCount = 0;
   @observable breedingFemaleCount = 0;
   @observable breedingWetnurseCount = 0;
   @observable breedingHatchProgress = 0;
+
+  // Thinking Control
+  @observable thinkingScientistCount = 0;
+  @observable thinkingWizardCount = 0;
 
   getEggsPerTick() {
     return this.eggsPerTick;
@@ -39,22 +44,45 @@ class KoboldStore {
     return this.koboldEmployedCount;
   }
 
-  getBreedingTime() {
-    return this.breedingTime;
+  getVocationTime(type) {
+    switch (type) {
+      case 'breeding' :
+        return this.breedingTime;
+        break;
+      case 'science' :
+        return this.scienceTime;
+        break;
+    }
   }
 
-  getBreedingMaleCount() {
-    return this.breedingMaleCount;
+  getBreedingCount(type) {
+    switch (type) {
+      case ('male') :
+        return this.breedingMaleCount;
+        break;
+      case ('female') :
+        return this.breedingFemaleCount;
+        break;
+      case ('wetnurse') :
+        return this.breedingWetnurseCount;
+        break;
+    }
   }
 
-  getBreedingFemaleCount() {
-    return this.breedingFemaleCount;
-  }
-  getBreedingWetnurseCount() {
-    return this.breedingWetnurseCount;
-  }
   getBreedingHatchProgress() {
-    return this.breedingHatchProgress}
+    return this.breedingHatchProgress;
+  }
+
+  getThinkingCount(type) {
+    switch (type) {
+      case 'scientist' :
+        return this.thinkingScientistCount;
+        break;
+      case 'wizard' :
+        return this.thinkingWizardCount;
+        break;
+    }
+  }
 }
 
 export default new KoboldStore;

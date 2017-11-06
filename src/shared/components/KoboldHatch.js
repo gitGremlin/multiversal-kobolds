@@ -1,12 +1,12 @@
 import {observer} from 'mobx-react';
-import React from 'react';
+import React, { Component } from 'react';
 import action from '../actions/KoboldActions';
 import store from '../stores/KoboldStore';
 import {IconButton, Tooltip} from 'material-ui/';
 import PersonAddIcon from 'material-ui-icons/PersonAdd';
 
 @observer
-export default class KoboldHatch extends React.Component {
+export default class KoboldHatch extends Component {
   handleOnHatchEgg = () => {
     action.hatchKoboldManual();
   };
