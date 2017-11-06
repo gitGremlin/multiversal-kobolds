@@ -24,14 +24,32 @@ class KoboldActions {
   }
 
   @action
-  modifyBreedingMale(number) {
-    store.breedingMaleCount += number;
-    store.koboldEmployedCount += number;
+  produceKobold(number) {
+    if (store.getEggCount() >=1) {
+      store.breedingHatchProgress += number;
+      console.log(store.getBreedingHatchProgress());
+      if (store.getBreedingHatchProgress() >= 1) {
+        let koboldsToHatch = Math.min(store.getEggCount(), Math.floor(store.getBreedingHatchProgress()));
+        store.koboldCount += koboldsToHatch;
+        store.eggCount -= koboldsToHatch;
+        store.breedingHatchProgress -= koboldsToHatch;
+      }
+    }
   }
 
   @action
-  modifyBreedingFemale(number) {
-    store.breedingFemaleCount += number;
+  modifyBreeding(type, number) {
+    switch (type) {
+      case 'male' :
+        store.breedingMaleCount += number;
+        break;
+      case 'female' :
+        store.breedingFemaleCount += number;
+        break;
+      case 'wetnurse' :
+        store.breedingWetnurseCount += number;
+        break;
+    }
     store.koboldEmployedCount += number;
   }
 }

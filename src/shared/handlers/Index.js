@@ -3,7 +3,7 @@ import ticker from '../util/KoboldTicker';
 import KoboldBar from '../components/KoboldBar';
 import KoboldHatch from '../components/KoboldHatch';
 import KoboldStats from '../components/KoboldStats';
-import KoboldBreeding from '../components/KoboldBreeding';
+import KoboldBreeding from '../components/vocations/KoboldBreeding';
 
 export default class Index extends React.Component {
 

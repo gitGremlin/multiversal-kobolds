@@ -8,19 +8,20 @@ export default class KoboldStats extends React.Component {
     const koboldCount = store.getKoboldCount();
     const eggCount = store.getEggCount();
     const koboldEmployedCount = store.getKoboldEmployedCount();
+    const koboldsPerSecond = store.getKoboldsPerTick() *4;
     const eggsPerSecond = store.getEggsPerTick()*4;
 
     return (
       <div>
         <h1>Totals</h1>
         <div>
-          Kobolds Birthed: {koboldCount}
-        </div>
-        <div>
-          Employed Kobolds: {koboldEmployedCount}
+          Kobolds Birthed: {koboldCount} (+ {koboldsPerSecond}/s)
         </div>
         <div>
           Eggs Available: {eggCount} (+ {eggsPerSecond}/s)
+        </div>
+        <div>
+          Employed Kobolds: {koboldEmployedCount}
         </div>
       </div>
     );

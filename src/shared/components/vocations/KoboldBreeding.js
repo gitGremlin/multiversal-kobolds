@@ -1,17 +1,14 @@
 import {observer} from 'mobx-react';
 import React from 'react';
-import action from '../actions/KoboldActions';
-import store from '../stores/KoboldStore';
+import action from '../../actions/KoboldActions';
+import store from '../../stores/KoboldStore';
 import {Paper, Typography, IconButton} from 'material-ui';
 import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
 
 @observer
-export default class KoboldBar extends React.Component {
-  handleOnMaleClick = (number) => {
-    action.modifyBreedingMale(number);
-  };
-  handleOnFemaleClick = (number) => {
-    action.modifyBreedingFemale(number);
+export default class KoboldBreeding extends React.Component {
+  handleOnClick = (type, number) => {
+    action.modifyBreeding(type, number);
   };
 
   render() {
@@ -24,11 +21,12 @@ export default class KoboldBar extends React.Component {
 
     const maleCount = store.getBreedingMaleCount();
     const femaleCount = store.getBreedingFemaleCount();
-    const eggsPerSecond = store.getEggsPerTick() * 4;
+    const wetnurseCount = store.getBreedingWetnurseCount();
 
     const addDisabled = (store.getKoboldEmployedCount() >= store.getKoboldCount());
     const reduceDisabledMale = store.getBreedingMaleCount() === 0;
     const reduceDisabledFemale = store.getBreedingFemaleCount() === 0;
+    const reduceDisabledWetnurse = store.getBreedingWetnurseCount() === 0;
 
 
     return (
@@ -41,12 +39,16 @@ export default class KoboldBar extends React.Component {
           <div>
             <IconButton
               disabled={reduceDisabledMale}
-              onClick={() => {this.handleOnMaleClick(-1)}}>
+              onClick={() => {
+                this.handleOnClick('male', -1);
+              }}>
               <IndeterminateCheckBox/>
             </IconButton>
             <IconButton
               disabled={addDisabled}
-              onClick={() => {this.handleOnMaleClick(+1)}}>
+              onClick={() => {
+                this.handleOnClick('male', +1);
+              }}>
               <AddBox/>
             </IconButton>
             Males: {maleCount}
@@ -54,15 +56,37 @@ export default class KoboldBar extends React.Component {
           <div>
             <IconButton
               disabled={reduceDisabledFemale}
-              onClick={() => {this.handleOnFemaleClick(-1)}}>
+              onClick={() => {
+                this.handleOnClick('female', -1);
+              }}>
               <IndeterminateCheckBox/>
             </IconButton>
             <IconButton
               disabled={addDisabled}
-              onClick={() => {this.handleOnFemaleClick(+1)}}>
+              onClick={() => {
+                this.handleOnClick('female', +1);
+              }}>
               <AddBox/>
             </IconButton>
             Females: {femaleCount}
+          </div>
+          <hr/>
+          <div>
+            <IconButton
+              disabled={reduceDisabledWetnurse}
+              onClick={() => {
+                this.handleOnClick('wetnurse', -1);
+              }}>
+              <IndeterminateCheckBox/>
+            </IconButton>
+            <IconButton
+              disabled={addDisabled}
+              onClick={() => {
+                this.handleOnClick('wetnurse', +1);
+              }}>
+              <AddBox/>
+            </IconButton>
+            Wet Nurses: {wetnurseCount}
           </div>
         </Paper>
       </div>
