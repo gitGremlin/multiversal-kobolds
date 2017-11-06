@@ -1,4 +1,6 @@
 import {observable} from 'mobx';
+import Tech from './KoboldTech';
+import Generation from './KoboldGenerations'
 
 class KoboldStore {
   // Egg Control
@@ -10,10 +12,6 @@ class KoboldStore {
   @observable koboldCount = 0;
   @observable koboldEmployedCount = 0;
 
-  // Vocation Control
-  @observable breedingTime = false;
-  @observable radTime = false;
-
   // Breeding Control
   @observable breedingMaleCount = 0;
   @observable breedingFemaleCount = 0;
@@ -22,8 +20,14 @@ class KoboldStore {
 
   // RAD Control
   @observable radScientistCount = 0;
-  @observable radScienceCount = [0,100];
+  @observable radScienceCount = [0, 100];
   @observable radSciencePerTick = 0;
+
+  // Tech Tree
+  @observable techTree = Tech.tree;
+
+  // Generation Rates
+  @observable generation = Generation.list;
 
   getEggsPerTick() {
     return this.eggsPerTick;
@@ -45,15 +49,8 @@ class KoboldStore {
     return this.koboldEmployedCount;
   }
 
-  getVocationTime(type) {
-    switch (type) {
-      case 'breeding' :
-        return this.breedingTime;
-        break;
-      case 'rad' :
-        return this.radTime;
-        break;
-    }
+  getGenerationRate(type) {
+    return this.generation[type];
   }
 
   getBreedingCount(type) {
@@ -81,12 +78,21 @@ class KoboldStore {
         break;
     }
   }
+
   getRADScienceCount(int) {
     return Math.floor(this.radScienceCount[int]);
   }
 
   getRADSciencePerTick() {
     return this.radSciencePerTick;
+  }
+
+  getTechCost(tech) {
+    return this.techTree[tech].cost
+  }
+
+  getTechResearched(tech) {
+    return this.techTree[tech].researched
   }
 }
 

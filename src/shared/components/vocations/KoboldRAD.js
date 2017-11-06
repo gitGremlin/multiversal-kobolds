@@ -2,13 +2,17 @@ import {observer} from 'mobx-react';
 import React, {Component} from 'react';
 import action from '../../actions/KoboldActions';
 import store from '../../stores/KoboldStore';
-import {Paper, Typography, IconButton} from 'material-ui';
+import {Paper, Typography, IconButton, Button} from 'material-ui';
 import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
 
 @observer
 export default class KoboldRAD extends Component {
   handleOnClick = (type, number) => {
     action.modifyRAD(type, number);
+  };
+
+  handleTechOnClick = (type) => {
+    action.researchTech('husbandry');
   };
 
   render() {
@@ -58,6 +62,19 @@ export default class KoboldRAD extends Component {
             </IconButton>
             Ichor Enthusiasts: {scientistCount}
           </Typography>
+          <div>
+            <div hidden={store.getTechResearched('husbandry')}>
+              <hr/>
+              <Button
+                color="primary"
+                disabled={store.getTechCost('husbandry') > store.getRADScienceCount(0)}
+                onClick={() => {
+                  this.handleTechOnClick('husbandry');
+                }}>
+                Kobold Husbandry
+              </Button>
+            </div>
+          </div>
         </div>
       </Paper>
     );

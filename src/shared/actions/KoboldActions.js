@@ -1,6 +1,7 @@
 import {action} from 'mobx';
 
 import store from '../stores/KoboldStore';
+import tech from './KoboldTechActions';
 
 class KoboldActions {
   @action
@@ -69,6 +70,13 @@ class KoboldActions {
         break;
     }
     store.koboldEmployedCount += number;
+  }
+
+  @action
+  researchTech(name) {
+    tech.research(name);
+    store.radScienceCount[0] -= store.getTechCost(name);
+    store.techTree[name].researched = true;
   }
 }
 

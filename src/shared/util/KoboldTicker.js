@@ -6,17 +6,17 @@ let ticksProduced = 0;
 function setBreedingStats() {
   if (store.getBreedingCount('female') > 0 && store.getBreedingCount('male') > 0) {
     const maleMod = store.getBreedingCount('male');
-    const femaleMod = store.getBreedingCount('female') / 4;
+    const femaleMod = store.getBreedingCount('female') / store.getGenerationRate('female');
 
     store.eggsPerTick = (Math.min(maleMod, femaleMod)) / 80;
   } else {
     store.eggsPerTick = 0;
   }
-  store.koboldsPerTick = store.getBreedingCount('wetnurse')/200;
+  store.koboldsPerTick = store.getBreedingCount('wetnurse')/store.getGenerationRate('wetnurse');
 }
 
 function setRADStats() {
-  store.radSciencePerTick = store.getRADCount('scientist')/100
+  store.radSciencePerTick = store.getRADCount('scientist')/store.getGenerationRate('science');
 }
 
 function doProduce() {
