@@ -14,11 +14,11 @@ function setBreedingStats() {
     const maleMod = store.getBreedingMaleCount();
     const femaleMod = store.getBreedingFemaleCount() / 4;
 
-    store.eggsPerTick = (Math.min(maleMod, femaleMod)) / 40;
+    store.eggsPerTick = (Math.min(maleMod, femaleMod)) / 80;
   } else {
     store.eggsPerTick = 0;
   }
-  store.koboldsPerTick = store.getBreedingWetnurseCount()/80;
+  store.koboldsPerTick = store.getBreedingWetnurseCount()/200;
 }
 
 function doProduce() {

@@ -3,7 +3,7 @@ import {observable} from 'mobx';
 class KoboldStore {
   // Egg Control
   @observable eggsPerTick = 0.0;
-  @observable eggCount = 25;
+  @observable eggCount = 100;
 
   // Kobold Control
   @observable koboldsPerTick = 0;
