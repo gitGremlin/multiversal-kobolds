@@ -25,6 +25,8 @@ class KoboldStore {
 
   // Tech Tree
   @observable techTree = Tech.tree;
+  @observable enableResearch = false;
+  @observable enableTooltips = false;
 
   // Generation Rates
   @observable generation = Generation.list;
@@ -93,6 +95,14 @@ class KoboldStore {
 
   getTechResearched(tech) {
     return this.techTree[tech].researched
+  }
+
+  getEnableResearch() {
+    return this.enableResearch
+  }
+
+  getEnableTooltips() {
+    return this.enableTooltips
   }
 }
 
