@@ -14,7 +14,7 @@ class KoboldTech {
     privateInvestigations: {
       cost: 80
     },
-    ichorExtractors: {
+    ichorStorage: {
       cost: 100
     },
   };

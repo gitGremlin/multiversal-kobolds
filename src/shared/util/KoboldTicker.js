@@ -25,10 +25,9 @@ function doProduce() {
   action.produceScience(store.getRADSciencePerTick());
 }
 
-// TODO: NEEDS FIXING
 function showRAD() {
   for (let item in store.techTree) {
-    if (store.techTree[item].available === true) {
+    if (store.techTree[item].available) {
       break;
     }
     if (store.getRADScienceCount(0) >= store.techTree[item].cost) {
