@@ -12,17 +12,29 @@ function setBreedingStats() {
   } else {
     store.eggsPerTick = 0;
   }
-  store.koboldsPerTick = store.getBreedingCount('wetnurse')/store.getGenerationRate('wetnurse');
+  store.koboldsPerTick = store.getBreedingCount('wetnurse') / store.getGenerationRate('wetnurse');
 }
 
 function setRADStats() {
-  store.radSciencePerTick = store.getRADCount('scientist')/store.getGenerationRate('science');
+  store.radSciencePerTick = store.getRADCount('scientist') / store.getGenerationRate('science');
 }
 
 function doProduce() {
   action.produceEgg(store.getEggsPerTick());
   action.produceKobold(store.getKoboldsPerTick());
-  action.produceScience(store.getRADSciencePerTick())
+  action.produceScience(store.getRADSciencePerTick());
+}
+
+// TODO: NEEDS FIXING
+function showRAD() {
+  for (let item in store.techTree) {
+    if (store.techTree[item].available === true) {
+      break;
+    }
+    if (store.getRADScienceCount(0) >= store.techTree[item].cost) {
+      store.techTree[item].available = true;
+    }
+  }
 }
 
 export default function () {
@@ -31,4 +43,5 @@ export default function () {
   setBreedingStats();
   setRADStats();
   doProduce();
+  showRAD();
 }
