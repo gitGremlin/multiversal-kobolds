@@ -31,9 +31,9 @@ export default class KoboldBreeding extends Component {
     const reduceDisabledWetnurse = wetnurseCount === 0;
 
     const eggCount = store.getEggCount();
-    const eggsPerSecond = store.getEggsPerTick() * 4;
+    const eggsPerSecond = (Math.round(store.getEggsPerTick() * 400)/100);
     const koboldCount = store.getKoboldCount();
-    const koboldsPerSecond = store.getKoboldsPerTick() * 4;
+    const koboldsPerSecond = (Math.round(store.getKoboldsPerTick() * 400)/100);
 
 
     return (
