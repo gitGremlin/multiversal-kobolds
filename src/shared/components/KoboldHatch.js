@@ -12,7 +12,7 @@ export default class KoboldHatch extends Component {
   };
 
   render() {
-    const disabled = store.getEggCount() === 0;
+    const disabled = store.getEggCount() === 0 || store.getMiningSpaceCount() === 0;
 
     return (
       <div>

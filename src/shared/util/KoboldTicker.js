@@ -19,10 +19,17 @@ function setRADStats() {
   store.radSciencePerTick = store.getVocationCount('scientist') / store.getGenerationRate('science');
 }
 
+function setMiningStats() {
+  store.miningGoldPerTick = store.getVocationCount('miner') / store.getGenerationRate('gold');
+  store.miningSpacePerTick = store.getVocationCount('tunneler') / store.getGenerationRate('space');
+}
+
 function doProduce() {
   action.produceEgg(store.getEggsPerTick());
   action.produceKobold(store.getKoboldsPerTick());
   action.produceScience(store.getRADSciencePerTick());
+  action.produceGold(store.getGoldPerTick());
+  action.produceSpace(store.getMiningSpacePerTick());
 }
 
 function showRAD() {
@@ -40,6 +47,7 @@ export default function () {
 
   setBreedingStats();
   setRADStats();
+  setMiningStats();
   showRAD();
   doProduce();
 }

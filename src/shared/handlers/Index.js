@@ -6,6 +6,7 @@ import KoboldHatch from '../components/KoboldHatch';
 import KoboldStats from '../components/KoboldStats';
 import KoboldBreeding from '../components/vocations/KoboldBreeding';
 import KoboldRAD from '../components/vocations/KoboldRAD';
+import KoboldMining from "../components/vocations/KoboldMining";
 
 export default class Index extends React.Component {
 
@@ -29,6 +30,7 @@ export default class Index extends React.Component {
         <div className='koboldPaper'>
           <KoboldBreeding/>
           <KoboldRAD/>
+          <KoboldMining/>
         </div>
       </div>
     );

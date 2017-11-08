@@ -42,7 +42,7 @@ export default class KoboldRAD extends Component {
   };
 
   render() {
-    const hidden = store.getKoboldCount() < 10;
+    const hidden = store.getKoboldCount() < 2;
 
     const style = {
       padding: 16,

@@ -4,7 +4,9 @@ class KoboldGenerations {
   @observable list = {
     female: 4,
     wetnurse: 200,
-    science: 100
+    science: 100,
+    gold: 600,
+    space: 400,
   };
 }
 

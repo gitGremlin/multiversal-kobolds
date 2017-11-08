@@ -5,22 +5,42 @@ class KoboldVocations {
     male: {
       name: 'Males',
       type: 'breeding',
-      description: ''
+      description: '',
     },
     female: {
       name: 'Females',
       type: 'breeding',
-      description: ''
+      description: '',
     },
     wetnurse: {
       name: 'Wet Nurses',
       type: 'breeding',
-      description: ''
+      description: '',
     },
     scientist: {
       name: 'Ichor Enthusiasts',
       type: 'rad',
-      description: ''
+      description: '',
+    },
+    miner: {
+      name: 'Miner',
+      type: 'mining',
+      description: '',
+    },
+    tunneler: {
+      name: 'Tunneler',
+      type: 'mining',
+      description: '',
+    },
+    farmer: {
+      name: 'Cat Farmer',
+      type: 'farming',
+      description: '',
+    },
+    butcher: {
+      name: 'Butcher',
+      type: 'farming',
+      description: '',
     },
   };
 }

@@ -4,29 +4,34 @@ class KoboldTech {
   @observable list = {
     husbandry: {
       name: 'Kobold Husbandry',
-      description: '',
-      cost: 30
+      description: 'improves the ratio of males-to-females required for optimal breeding',
+      cost: 30,
+      prereq: '',
     },
     library: {
       name: 'Library Vault',
-      description: '',
-      cost: 50
-    },
-    koboldSage: {
-      name: 'Kobold Sage',
-      description: '',
-      cost: 70
+      description: 'we will be able to view previously researched technology',
+      cost: 50,
+      prereq: '',
     },
     privateInvestigations: {
       name: 'Private Investigations',
-      description: '',
-      cost: 80
+      description: 'lets us view tooltips on everything, yip yip!',
+      cost: 80,
+      prereq: '',
     },
     ichorStorage: {
       name: 'Ichor Storage',
-      description: '',
-      cost: 100
+      description: 'construction of Ichor Storage will be available!',
+      cost: 100,
+      prereq: '',
     },
+    recordKeeping: {
+      name: 'Record Keeping',
+      description: 'allows us to manually save the game, whatever that means...',
+      cost: 300,
+      prereq: 'library',
+    }
   };
 }
 

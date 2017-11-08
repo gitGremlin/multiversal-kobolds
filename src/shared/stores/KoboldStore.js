@@ -9,21 +9,41 @@ class KoboldStore {
   @observable eggCount = 100;
 
   // Kobold Control
-  @observable koboldsPerTick = 0;
+  @observable koboldsPerTick = 0.0;
   @observable koboldCount = 0;
   @observable koboldEmployedCount = 0;
   @observable vocation = Vocation.list;
 
   // Breeding Control
-  @observable breedingMaleCount = 0;
-  @observable breedingFemaleCount = 0;
-  @observable breedingWetnurseCount = 0;
+  @observable breedingVocationCount = [0, 0, 300];
   @observable breedingHatchProgress = 0;
 
   // RAD Control
-  @observable radScientistCount = 0;
+  @observable radVocationCount = [0];
   @observable radScienceCount = [0, 100];
   @observable radSciencePerTick = 0;
+
+  // Mining Control
+  @observable miningVocationCount = [0, 0];
+  @observable miningGoldCount = [0, 20];
+  @observable miningGoldPerTick = 0.0;
+  @observable miningSpaceCount = 100;
+  @observable miningSpaceAvailable = true;
+  @observable miningSpacePerTick = 0.0;
+
+  // Farming Control
+  @observable farmingVocationCount = [0, 0];
+  @observable farmingCatCount = 0;
+  @observable farmingCatsPerTick = 0.0;
+  @observable farmingSlaughterPerTick = 0.0;
+  @observable farmingMeatCount = 0;
+  @observable farmingSkinCount = 0;
+
+  // Fabrication Control
+  @observable fabricationLeatherCount = 0;
+  @observable fabricationLeatherPerTick = 0.0;
+  @observable fabricationTrenchcoatCount = 0;
+  @observable fabricationTrenchcoatPerTick = 0.0;
 
   // Tech Tree
   @observable techTree = Tech.list;
@@ -56,7 +76,7 @@ class KoboldStore {
   getGenerationRate(type) {
     return this.generation[type];
   }
-  
+
   getBreedingHatchProgress() {
     return this.breedingHatchProgress;
   }
@@ -64,16 +84,22 @@ class KoboldStore {
   getVocationCount(type) {
     switch (type) {
       case 'male' :
-        return this.breedingMaleCount;
+        return this.breedingVocationCount[0];
         break;
       case 'female' :
-        return this.breedingFemaleCount;
+        return this.breedingVocationCount[1];
         break;
       case 'wetnurse' :
-        return this.breedingWetnurseCount;
+        return this.breedingVocationCount[2];
         break;
       case 'scientist' :
-        return this.radScientistCount;
+        return this.radVocationCount[0];
+        break;
+      case 'miner' :
+        return this.miningVocationCount[0];
+        break;
+      case 'tunneler' :
+        return this.miningVocationCount[1];
         break;
     }
   }
@@ -92,6 +118,22 @@ class KoboldStore {
 
   getTechResearched(tech) {
     return this.techTree[tech].researched;
+  }
+
+  getGoldCount(int) {
+    return Math.floor(this.miningGoldCount[int]);
+  }
+
+  getGoldPerTick() {
+    return this.miningGoldPerTick;
+  }
+
+  getMiningSpaceCount() {
+    return Math.floor(this.miningSpaceCount);
+  }
+
+  getMiningSpacePerTick() {
+    return this.miningSpacePerTick;
   }
 
   getEnableResearch() {
