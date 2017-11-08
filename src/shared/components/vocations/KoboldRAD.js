@@ -11,6 +11,21 @@ export default class KoboldRAD extends Component {
   //   action.modifyRAD(type, number);
   // };
 
+  generateVoc = (type) => {
+    let vocArr = [];
+    let count = 0;
+    for (let voc in store.vocation) {
+      if (store.vocation[voc].type === type) {
+        count++;
+        vocArr.push(<VocationButton key={count} name={voc}/>);
+      }
+    }
+    if (vocArr.length !== 0) {
+      vocArr.splice(0, 0, <hr key={0}/>);
+    }
+    return vocArr;
+  };
+
   generateTech = () => {
     let techsArr = [];
     let count = 0;
@@ -20,7 +35,9 @@ export default class KoboldRAD extends Component {
         techsArr.push(<KoboldRADButton key={count} name={tech}/>);
       }
     }
-    if (techsArr.length !== 0) techsArr.splice(0, 0, <hr key={0}/>);
+    if (techsArr.length !== 0) {
+      techsArr.splice(0, 0, <hr key={0}/>);
+    }
     return techsArr;
   };
 
@@ -39,18 +56,17 @@ export default class KoboldRAD extends Component {
 
     return (
       <Paper elevation={4} style={style} hidden={hidden}>
+        <Typography type="headline" component="h3" align="center">
+          Research & Development
+        </Typography>
         <div>
-          <Typography type="headline" component="h3" align="center">
-            Research & Development
+          <Typography type="body1" component="p">
+            Research Ichor: {store.getRADScienceCount(0)}/{store.getRADScienceCount(1)} (+ {sciencePerSecond}/s)
           </Typography>
-          <div>
-            <Typography type="body1" component="p">
-              Research Ichor: {store.getRADScienceCount(0)}/{store.getRADScienceCount(1)} (+ {sciencePerSecond}/s)
-            </Typography>
-            <hr/>
-          </div>
-        <VocationButton name='scientist'/>
+
+          {[...this.generateVoc('rad')]}
           {[...this.generateTech()]}
+
         </div>
       </Paper>
     );

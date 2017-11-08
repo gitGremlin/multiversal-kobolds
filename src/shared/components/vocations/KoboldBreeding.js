@@ -1,12 +1,26 @@
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
-import action from '../../actions/KoboldActions';
 import store from '../../stores/KoboldStore';
 import VocationButton from '../buttons/VocationButton';
 import {Paper, Typography} from 'material-ui';
 
 @observer
 export default class KoboldBreeding extends Component {
+
+  generateVoc = (type) => {
+    let vocArr = [];
+    let count = 0;
+    for (let voc in store.vocation) {
+      if (store.vocation[voc].type === type) {
+        count++;
+        vocArr.push(<VocationButton key={count} name={voc}/>);
+      }
+    }
+    if (vocArr.length !== 0) {
+      vocArr.splice(0, 0, <hr key={0}/>);
+    }
+    return vocArr;
+  };
 
   render() {
     const hidden = store.getKoboldCount() < 2;
@@ -26,23 +40,17 @@ export default class KoboldBreeding extends Component {
     return (
       <Paper className="paper" elevation={4} style={style} hidden={hidden}>
         <div>
-          <div>
-            <Typography type="headline" component="h3" align="center">
-              Breeding Programme
-            </Typography>
-            <Typography type="body1" component="p">
-              Eggs Available: {eggCount} (+ {eggsPerSecond}/s)
-            </Typography>
-            <Typography type="body1" component="p">
-              Kobolds Birthed: {koboldCount} (+ {koboldsPerSecond}/s)
-            </Typography>
-            <hr/>
-          </div>
+          <Typography type="headline" component="h3" align="center">
+            Breeding Programme
+          </Typography>
+          <Typography type="body1" component="p">
+            Eggs Available: {eggCount} (+ {eggsPerSecond}/s)
+          </Typography>
+          <Typography type="body1" component="p">
+            Kobolds Birthed: {koboldCount} (+ {koboldsPerSecond}/s)
+          </Typography>
 
-          <VocationButton name='male'/>
-          <VocationButton name='female'/>
-          <hr/>
-          <VocationButton name='wetnurse'/>
+          {[...this.generateVoc('breeding')]}
 
         </div>
       </Paper>
