@@ -1,7 +1,7 @@
 import {observable} from 'mobx';
 
 class KoboldTech {
-  @observable tree = {
+  @observable list = {
     husbandry: {
       name: 'Kobold Husbandry',
       description: '',

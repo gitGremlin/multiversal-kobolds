@@ -1,16 +1,15 @@
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
-import action from '../../actions/KoboldActions';
 import store from '../../stores/KoboldStore';
-import KoboldRADButton from '../buttons/KoboldRADButton';
+import VocationButton from '../buttons/VocationButton';
+import KoboldRADButton from '../buttons/RADButton';
 import {Paper, Typography, IconButton, Button} from 'material-ui';
-import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
 
 @observer
 export default class KoboldRAD extends Component {
-  handleOnClick = (type, number) => {
-    action.modifyRAD(type, number);
-  };
+  // handleOnClick = (type, number) => {
+  //   action.modifyRAD(type, number);
+  // };
 
   generateTech = () => {
     let techsArr = [];
@@ -35,11 +34,6 @@ export default class KoboldRAD extends Component {
       float: 'left'
     };
 
-    const scientistCount = store.getRADCount('scientist');
-
-    const addDisabled = (store.getKoboldEmployedCount() >= store.getKoboldCount());
-    const reduceDisabledScientist = scientistCount === 0;
-
     const sciencePerSecond = store.getRADSciencePerTick() * 4;
 
 
@@ -55,24 +49,7 @@ export default class KoboldRAD extends Component {
             </Typography>
             <hr/>
           </div>
-          <Typography type="body1" component="p">
-            <IconButton
-              disabled={reduceDisabledScientist}
-              onClick={() => {
-                this.handleOnClick('scientist', -1);
-              }}>
-              <IndeterminateCheckBox/>
-            </IconButton>
-            <IconButton
-              disabled={addDisabled}
-              onClick={() => {
-                this.handleOnClick('scientist', +1);
-              }}>
-              <AddBox/>
-            </IconButton>
-            Ichor Enthusiasts: {scientistCount}
-          </Typography>
-
+        <VocationButton name='scientist'/>
           {[...this.generateTech()]}
         </div>
       </Paper>

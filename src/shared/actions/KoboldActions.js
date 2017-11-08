@@ -26,7 +26,7 @@ class KoboldActions {
 
   @action
   produceKobold(number) {
-    if (store.getEggCount() >=1) {
+    if (store.getEggCount() >= 1) {
       store.breedingHatchProgress += number;
       if (store.getBreedingHatchProgress() >= 1) {
         let koboldsToHatch = Math.min(store.getEggCount(), Math.floor(store.getBreedingHatchProgress()));
@@ -41,13 +41,13 @@ class KoboldActions {
   produceScience(number) {
     if (store.getRADScienceCount(0) < store.getRADScienceCount(1)) {
       const min = store.getRADScienceCount(1) - store.getRADScienceCount(0);
-      store.radScienceCount[0] += Math.min(number, min)
+      store.radScienceCount[0] += Math.min(number, min);
     }
 
   }
 
   @action
-  modifyBreeding(type, number) {
+  modifyVocation(type, number) {
     switch (type) {
       case 'male' :
         store.breedingMaleCount += number;
@@ -58,13 +58,6 @@ class KoboldActions {
       case 'wetnurse' :
         store.breedingWetnurseCount += number;
         break;
-    }
-    store.koboldEmployedCount += number;
-  }
-
-  @action
-  modifyRAD(type, number) {
-    switch (type) {
       case 'scientist' :
         store.radScientistCount += number;
         break;

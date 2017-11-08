@@ -1,6 +1,7 @@
 import {observable} from 'mobx';
 import Tech from './KoboldTech';
 import Generation from './KoboldGenerations';
+import Vocation from './KoboldVocations'
 
 class KoboldStore {
   // Egg Control
@@ -11,6 +12,7 @@ class KoboldStore {
   @observable koboldsPerTick = 0;
   @observable koboldCount = 0;
   @observable koboldEmployedCount = 0;
+  @observable vocation = Vocation.list;
 
   // Breeding Control
   @observable breedingMaleCount = 0;
@@ -24,7 +26,7 @@ class KoboldStore {
   @observable radSciencePerTick = 0;
 
   // Tech Tree
-  @observable techTree = Tech.tree;
+  @observable techTree = Tech.list;
   @observable enableResearch = false;
   @observable enableTooltips = false;
 
@@ -54,27 +56,22 @@ class KoboldStore {
   getGenerationRate(type) {
     return this.generation[type];
   }
-
-  getBreedingCount(type) {
-    switch (type) {
-      case ('male') :
-        return this.breedingMaleCount;
-        break;
-      case ('female') :
-        return this.breedingFemaleCount;
-        break;
-      case ('wetnurse') :
-        return this.breedingWetnurseCount;
-        break;
-    }
-  }
-
+  
   getBreedingHatchProgress() {
     return this.breedingHatchProgress;
   }
 
-  getRADCount(type) {
+  getVocationCount(type) {
     switch (type) {
+      case 'male' :
+        return this.breedingMaleCount;
+        break;
+      case 'female' :
+        return this.breedingFemaleCount;
+        break;
+      case 'wetnurse' :
+        return this.breedingWetnurseCount;
+        break;
       case 'scientist' :
         return this.radScientistCount;
         break;
