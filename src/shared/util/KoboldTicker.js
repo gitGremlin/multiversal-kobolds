@@ -27,11 +27,10 @@ function doProduce() {
 
 function showRAD() {
   for (let item in store.techTree) {
-    if (store.techTree[item].available) {
-      break;
-    }
-    if (store.getRADScienceCount(0) >= store.techTree[item].cost) {
-      store.techTree[item].available = true;
+    if (!store.techTree[item].available) {
+      if (store.getRADScienceCount(0) > (store.techTree[item].cost)-10) {
+        store.techTree[item].available = true;
+      }
     }
   }
 }
@@ -39,8 +38,10 @@ function showRAD() {
 export default function () {
   ticksProduced++;
 
+  console.log(ticksProduced)
+
   setBreedingStats();
   setRADStats();
-  doProduce();
   showRAD();
+  doProduce();
 }

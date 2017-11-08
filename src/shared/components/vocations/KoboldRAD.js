@@ -63,7 +63,7 @@ export default class KoboldRAD extends Component {
             Ichor Enthusiasts: {scientistCount}
           </Typography>
           <div>
-            <div hidden={store.getTechResearched('husbandry') || !store.techTree.husbandry.available}>
+            <div hidden={store.getTechResearched('husbandry') || !store.techTree['husbandry'].available}>
               <hr/>
               <Button
                 color="primary"
@@ -74,7 +74,7 @@ export default class KoboldRAD extends Component {
                 Kobold Husbandry
               </Button>
             </div>
-            <div hidden={store.getTechResearched('library') || !store.techTree.library.available}>
+            <div hidden={store.getTechResearched('library') || !store.techTree['library'].available}>
               <hr/>
               <Button
                 color="primary"
@@ -85,18 +85,7 @@ export default class KoboldRAD extends Component {
                 Library Vault
               </Button>
             </div>
-            <div hidden={store.getTechResearched('privateInvestigations') || !store.techTree.privateInvestigations.available}>
-              <hr/>
-              <Button
-                color="primary"
-                disabled={store.getTechCost('privateInvestigations') > store.getRADScienceCount(0)}
-                onClick={() => {
-                  this.handleTechOnClick('privateInvestigations');
-                }}>
-                Private Investigations
-              </Button>
-            </div>
-            <div hidden={store.getTechResearched('koboldSage') || !store.techTree.koboldSage.available}>
+            <div hidden={store.getTechResearched('koboldSage') || !store.techTree['koboldSage'].available}>
               <hr/>
               <Button
                 color="primary"
@@ -107,7 +96,18 @@ export default class KoboldRAD extends Component {
                 Kobold Sage
               </Button>
             </div>
-            <div hidden={store.getTechResearched('ichorStorage') || !store.techTree.ichorStorage.available}>
+            <div hidden={store.getTechResearched('privateInvestigations') || !store.techTree['privateInvestigations'].available}>
+              <hr/>
+              <Button
+                color="primary"
+                disabled={store.getTechCost('privateInvestigations') > store.getRADScienceCount(0)}
+                onClick={() => {
+                  this.handleTechOnClick('privateInvestigations');
+                }}>
+                Private Investigations
+              </Button>
+            </div>
+            <div hidden={store.getTechResearched('ichorStorage') || !store.techTree['ichorStorage'].available}>
               <hr/>
               <Button
                 color="primary"
