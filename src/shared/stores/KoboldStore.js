@@ -1,6 +1,6 @@
 import {observable} from 'mobx';
 import Tech from './KoboldTech';
-import Generation from './KoboldGenerations'
+import Generation from './KoboldGenerations';
 
 class KoboldStore {
   // Egg Control
@@ -90,20 +90,24 @@ class KoboldStore {
   }
 
   getTechCost(tech) {
-    return this.techTree[tech].cost
+    return this.techTree[tech].cost;
   }
 
   getTechResearched(tech) {
-    return this.techTree[tech].researched
+    return this.techTree[tech].researched;
   }
 
   getEnableResearch() {
-    return this.enableResearch
+    return this.enableResearch;
   }
 
   getEnableTooltips() {
-    return this.enableTooltips
+    return this.enableTooltips;
   }
 }
 
-export default new KoboldStore;
+export default new KoboldStore
+
+// Debug Mode:
+const store = window.store = new KoboldStore();
+// export default store

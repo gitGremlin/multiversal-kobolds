@@ -9,7 +9,6 @@ import KoboldRAD from '../components/vocations/KoboldRAD';
 
 export default class Index extends React.Component {
 
-
   constructor() {
     super();
     setInterval(function () {
@@ -19,15 +18,15 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <div id='container'>
-        <div>
+      <div id='indexContainer'>
+        <div className='koboldStatistics'>
           <KoboldBar/>
           <br/>
           <KoboldHatch/>
           <KoboldStats/>
         </div>
         <hr/>
-        <div>
+        <div className='koboldPaper'>
           <KoboldBreeding/>
           <KoboldRAD/>
         </div>

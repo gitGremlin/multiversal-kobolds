@@ -2,6 +2,7 @@ import {observer} from 'mobx-react';
 import React, {Component} from 'react';
 import action from '../../actions/KoboldActions';
 import store from '../../stores/KoboldStore';
+import KoboldRADButton from '../buttons/KoboldRADButton';
 import {Paper, Typography, IconButton, Button} from 'material-ui';
 import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
 
@@ -11,8 +12,17 @@ export default class KoboldRAD extends Component {
     action.modifyRAD(type, number);
   };
 
-  handleTechOnClick = (type) => {
-    action.researchTech(type);
+  generateTech = () => {
+    let techsArr = [];
+    let count = 0;
+    for (let tech in store.techTree) {
+      if (!store.getTechResearched(tech) && store.techTree[tech].available) {
+        count++;
+        techsArr.push(<KoboldRADButton key={count} name={tech}/>);
+      }
+    }
+    if (techsArr.length !== 0) techsArr.splice(0, 0, <hr key={0}/>);
+    return techsArr;
   };
 
   render() {
@@ -62,68 +72,8 @@ export default class KoboldRAD extends Component {
             </IconButton>
             Ichor Enthusiasts: {scientistCount}
           </Typography>
-          <div>
-            <div hidden={store.getTechResearched('husbandry') || !store.techTree['husbandry'].available}>
-              <hr/>
-              <Button
-                raised
-                color="primary"
-                disabled={store.getTechCost('husbandry') > store.getRADScienceCount(0)}
-                onClick={() => {
-                  this.handleTechOnClick('husbandry');
-                }}>
-                Kobold Husbandry
-              </Button>
-            </div>
-            <div hidden={store.getTechResearched('library') || !store.techTree['library'].available}>
-              <hr/>
-              <Button
-                raised
-                color="primary"
-                disabled={store.getTechCost('library') > store.getRADScienceCount(0)}
-                onClick={() => {
-                  this.handleTechOnClick('library');
-                }}>
-                Library Vault
-              </Button>
-            </div>
-            <div hidden={store.getTechResearched('koboldSage') || !store.techTree['koboldSage'].available}>
-              <hr/>
-              <Button
-                raised
-                color="primary"
-                disabled={store.getTechCost('koboldSage') > store.getRADScienceCount(0)}
-                onClick={() => {
-                  this.handleTechOnClick('koboldSage');
-                }}>
-                Kobold Sage
-              </Button>
-            </div>
-            <div hidden={store.getTechResearched('privateInvestigations') || !store.techTree['privateInvestigations'].available}>
-              <hr/>
-              <Button
-                raised
-                color="primary"
-                disabled={store.getTechCost('privateInvestigations') > store.getRADScienceCount(0)}
-                onClick={() => {
-                  this.handleTechOnClick('privateInvestigations');
-                }}>
-                Private Investigations
-              </Button>
-            </div>
-            <div hidden={store.getTechResearched('ichorStorage') || !store.techTree['ichorStorage'].available}>
-              <hr/>
-              <Button
-                raised
-                color="primary"
-                disabled={store.getTechCost('ichorStorage') > store.getRADScienceCount(0)}
-                onClick={() => {
-                  this.handleTechOnClick('ichorStorage');
-                }}>
-                Ichor Storage
-              </Button>
-            </div>
-          </div>
+
+          {[...this.generateTech()]}
         </div>
       </Paper>
     );
