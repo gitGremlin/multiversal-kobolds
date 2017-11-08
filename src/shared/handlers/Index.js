@@ -1,24 +1,11 @@
 import React from 'react';
 import ticker from '../util/KoboldTicker';
 
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
-
 import KoboldBar from '../components/KoboldBar';
 import KoboldHatch from '../components/KoboldHatch';
 import KoboldStats from '../components/KoboldStats';
 import KoboldBreeding from '../components/vocations/KoboldBreeding';
 import KoboldRAD from '../components/vocations/KoboldRAD';
-
-const theme = createMuiTheme({
-//   palette: {
-//     background: {
-//       paper: 'cyan'
-//     }
-//   },
-//   status: {
-//     danger: 'orange'
-//   }
-});
 
 export default class Index extends React.Component {
 
@@ -32,21 +19,19 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <div id='container'>
-          <div>
-            <KoboldBar/>
-            <br/>
-            <KoboldHatch/>
-            <KoboldStats/>
-          </div>
-          <hr/>
-          <div>
-            <KoboldBreeding/>
-            <KoboldRAD/>
-          </div>
+      <div id='container'>
+        <div>
+          <KoboldBar/>
+          <br/>
+          <KoboldHatch/>
+          <KoboldStats/>
         </div>
-      </MuiThemeProvider>
+        <hr/>
+        <div>
+          <KoboldBreeding/>
+          <KoboldRAD/>
+        </div>
+      </div>
     );
   }
 }

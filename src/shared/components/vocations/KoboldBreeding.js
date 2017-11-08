@@ -37,7 +37,7 @@ export default class KoboldBreeding extends Component {
 
 
     return (
-      <Paper elevation={4} style={style} hidden={hidden}>
+      <Paper className="paper" elevation={4} style={style} hidden={hidden}>
         <div>
           <div>
             <Typography type="headline" component="h3" align="center">

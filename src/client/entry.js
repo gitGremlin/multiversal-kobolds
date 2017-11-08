@@ -1,7 +1,18 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from "react-dom";
 import Index from '../shared/handlers/Index';
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 
-import './styles/main.scss'
+import materialThemeConfig from './theme/material.theme.config';
 
-render(<Index />, document.getElementById('main'));
+const muiTheme = createMuiTheme(materialThemeConfig);
+
+// import styles
+import "./styles/main.scss";
+
+ReactDOM.render(
+  <MuiThemeProvider theme={muiTheme}>
+    <Index/>
+  </MuiThemeProvider>,
+  document.getElementById('main')
+);

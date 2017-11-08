@@ -66,6 +66,7 @@ export default class KoboldRAD extends Component {
             <div hidden={store.getTechResearched('husbandry') || !store.techTree['husbandry'].available}>
               <hr/>
               <Button
+                raised
                 color="primary"
                 disabled={store.getTechCost('husbandry') > store.getRADScienceCount(0)}
                 onClick={() => {
@@ -77,6 +78,7 @@ export default class KoboldRAD extends Component {
             <div hidden={store.getTechResearched('library') || !store.techTree['library'].available}>
               <hr/>
               <Button
+                raised
                 color="primary"
                 disabled={store.getTechCost('library') > store.getRADScienceCount(0)}
                 onClick={() => {
@@ -88,6 +90,7 @@ export default class KoboldRAD extends Component {
             <div hidden={store.getTechResearched('koboldSage') || !store.techTree['koboldSage'].available}>
               <hr/>
               <Button
+                raised
                 color="primary"
                 disabled={store.getTechCost('koboldSage') > store.getRADScienceCount(0)}
                 onClick={() => {
@@ -99,6 +102,7 @@ export default class KoboldRAD extends Component {
             <div hidden={store.getTechResearched('privateInvestigations') || !store.techTree['privateInvestigations'].available}>
               <hr/>
               <Button
+                raised
                 color="primary"
                 disabled={store.getTechCost('privateInvestigations') > store.getRADScienceCount(0)}
                 onClick={() => {
@@ -110,6 +114,7 @@ export default class KoboldRAD extends Component {
             <div hidden={store.getTechResearched('ichorStorage') || !store.techTree['ichorStorage'].available}>
               <hr/>
               <Button
+                raised
                 color="primary"
                 disabled={store.getTechCost('ichorStorage') > store.getRADScienceCount(0)}
                 onClick={() => {

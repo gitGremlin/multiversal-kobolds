@@ -1,7 +1,11 @@
-// Use this for reference: https://github.com/callemall/material-ui/blob/master/src/styles/getMuiTheme.js
-import Styles from '../styles/main.scss'
+// Use this for reference: https://material-ui-next.com/customization/themes/#the-other-variables
 
-// const { } = Styles;
+import Styles from '../styles/main.scss';
+
+const {} = Styles;
 
 export default {
-}
+  palette: {
+    type: 'dark'
+  }
+};

@@ -38,8 +38,6 @@ function showRAD() {
 export default function () {
   ticksProduced++;
 
-  console.log(ticksProduced)
-
   setBreedingStats();
   setRADStats();
   showRAD();
