@@ -7,7 +7,7 @@ class KoboldTechActions {
   research(name) {
     switch (name) {
       case('husbandry') :
-        store.generation['female'] -= 1;
+        store.generation.list['female'] -= 1;
         break;
       case('library') :
         store.enableResearch = true;
@@ -16,7 +16,7 @@ class KoboldTechActions {
         store.enableTooltips = true;
         break;
       case('ichorStorage') :
-        store.radScienceCount[1] += 100;
+        store.rad.ichorCount[1] += 100;
         break;
     }
   }

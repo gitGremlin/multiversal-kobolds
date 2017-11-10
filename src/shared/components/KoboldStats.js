@@ -6,8 +6,8 @@ import store from '../stores/KoboldStore';
 @observer
 export default class KoboldStats extends Component {
   render() {
-    const koboldCount = store.getKoboldCount();
-    const koboldEmployedCount = store.getKoboldEmployedCount();
+    const koboldCount = store.kobold.getCount();
+    const koboldEmployedCount = store.kobold.getEmployedCount();
     const koboldUnemployedCount = koboldCount - koboldEmployedCount;
 
     return (

@@ -6,92 +6,97 @@ import tech from './KoboldTechActions';
 class KoboldActions {
   @action
   hatchKoboldManual() {
-    if (store.getEggCount() > 0 && store.getMiningSpaceCount() > 0) {
-      store.eggCount--;
-      store.miningSpaceCount --;
-      store.koboldCount++;
+    if (store.egg.getCount() > 0 && store.mining.getSpaceCount() > 0) {
+      store.egg.count--;
+      store.mining.spaceCount --;
+      store.kobold.count++;
     }
   }
 
   @action
+  resetStores() {
+    store.reset();
+  }
+
+  @action
   hatchKoboldAutomatic(number) {
-    const koboldsToHatch = Math.min(store.getEggCount(), store.getMiningSpaceCount(), number);
-    store.koboldCount += koboldsToHatch;
-    store.eggCount -= koboldsToHatch;
-    store.miningSpaceCount -= koboldsToHatch;
+    const koboldsToHatch = Math.min(store.egg.getCount(), store.mining.getSpaceCount(), number);
+    store.kobold.count += koboldsToHatch;
+    store.egg.count -= koboldsToHatch;
+    store.mining.spaceCount -= koboldsToHatch;
   }
 
   @action
   produceEgg(number) {
-    store.eggCount += number;
+    store.egg.count += number;
   }
 
   @action
   produceKobold(number) {
-    if (store.getEggCount() >= 1 && store.getMiningSpaceCount() >= 1) {
-      store.breedingHatchProgress += number;
-      if (store.getBreedingHatchProgress() >=1) {
-        let koboldsToHatch = Math.min(store.getEggCount(), store.getMiningSpaceCount(), Math.floor(store.getBreedingHatchProgress()))
-        store.koboldCount += koboldsToHatch;
-        store.eggCount -= koboldsToHatch;
-        store.miningSpaceCount -= koboldsToHatch;
-        store.breedingHatchProgress -= koboldsToHatch;
+    if (store.egg.getCount() >= 1 && store.mining.getSpaceCount() >= 1) {
+      store.breeding.hatchProgress += number;
+      if (store.breeding.getHatchProgress() >=1) {
+        let koboldsToHatch = Math.min(store.egg.getCount(), store.mining.getSpaceCount(), Math.floor(store.breeding.getHatchProgress()))
+        store.kobold.count += koboldsToHatch;
+        store.egg.count -= koboldsToHatch;
+        store.mining.spaceCount -= koboldsToHatch;
+        store.breeding.hatchProgress -= koboldsToHatch;
       }
     }
   }
 
   @action
   produceScience(number) {
-    if (store.getRADScienceCount(0) < store.getRADScienceCount(1)) {
-      const min = store.getRADScienceCount(1) - store.getRADScienceCount(0);
-      store.radScienceCount[0] += Math.min(number, min);
+    if (store.rad.getIchorCount(0) < store.rad.getIchorCount(1)) {
+      const min = store.rad.getIchorCount(1) - store.rad.getIchorCount(0);
+      store.rad.ichorCount[0] += Math.min(number, min);
     }
 
   }
 
   @action
   produceGold(number) {
-    if (store.getGoldCount(0) < store.getGoldCount(1)) {
-      const min = store.getGoldCount(1) - store.getGoldCount(0);
-      store.miningGoldCount[0] += Math.min(number, min);
+    if (store.mining.getGoldCount(0) < store.mining.getGoldCount(1)) {
+      const min = store.mining.getGoldCount(1) - store.mining.getGoldCount(0);
+      store.mining.goldCount[0] += Math.min(number, min);
     }
   }
 
   @action
   produceSpace(number) {
-    store.miningSpaceCount += number;
+    store.mining.spaceCount += number;
   }
 
   @action
   modifyVocation(type, number) {
     switch (type) {
       case 'male' :
-        store.breedingVocationCount[0] += number;
+        store.breeding.vocationCount[0] += number;
         break;
       case 'female' :
-        store.breedingVocationCount[1] += number;
+        store.breeding.vocationCount[1] += number;
         break;
       case 'wetnurse' :
-        store.breedingVocationCount[2] += number;
+        store.breeding.vocationCount[2] += number;
         break;
       case 'scientist' :
-        store.radVocationCount[0] += number;
+        store.rad.vocationCount[0] += number;
         break;
       case 'miner' :
-        store.miningVocationCount[0] += number;
+        store.mining.vocationCount[0] += number;
         break;
       case 'tunneler' :
-        store.miningVocationCount[1] += number;
+        store.mining.vocationCount[1] += number;
         break;
     }
-    store.koboldEmployedCount += number;
+    store.kobold.employedCount += number;
   }
 
   @action
   researchTech(name) {
     tech.research(name);
-    store.radScienceCount[0] -= store.getTechCost(name);
-    store.techTree[name].researched = true;
+    store.rad.ichorCount[0] -= store.tech.getCost(name);
+    store.tech.list[name].researched = true;
   }
 }
 

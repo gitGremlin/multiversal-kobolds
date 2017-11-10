@@ -16,7 +16,7 @@ export default class KoboldVocationButton extends Component {
 
     const vocationPopCount = store.getVocationCount(this.props.name);
 
-    const addDisabled = (store.getKoboldEmployedCount() >= store.getKoboldCount());
+    const addDisabled = (store.kobold.getEmployedCount() >= store.kobold.getCount());
     const reduceDisabledPop = vocationPopCount === 0;
 
     return (
@@ -35,7 +35,7 @@ export default class KoboldVocationButton extends Component {
           }}>
           <AddBox/>
         </IconButton>
-        {store.vocation[this.props.name].name}: {vocationPopCount}
+        {store.vocation.list[this.props.name].name}: {vocationPopCount}
       </Typography>
     );
   }

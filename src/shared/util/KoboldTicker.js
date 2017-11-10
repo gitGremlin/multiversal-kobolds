@@ -6,37 +6,37 @@ let ticksProduced = 0;
 function setBreedingStats() {
   if (store.getVocationCount('female') > 0 && store.getVocationCount('male') > 0) {
     const maleMod = store.getVocationCount('male');
-    const femaleMod = store.getVocationCount('female') / store.getGenerationRate('female');
+    const femaleMod = store.getVocationCount('female') / store.generation.getRate('female');
 
-    store.eggsPerTick = (Math.min(maleMod, femaleMod)) / 80;
+    store.egg.perTick = (Math.min(maleMod, femaleMod)) / 80;
   } else {
-    store.eggsPerTick = 0;
+    store.egg.perTick = 0;
   }
-  store.koboldsPerTick = store.getVocationCount('wetnurse') / store.getGenerationRate('wetnurse');
+  store.kobold.perTick = store.getVocationCount('wetnurse') / store.generation.getRate('wetnurse');
 }
 
 function setRADStats() {
-  store.radSciencePerTick = store.getVocationCount('scientist') / store.getGenerationRate('science');
+  store.rad.ichorPerTick = store.getVocationCount('scientist') / store.generation.getRate('science');
 }
 
 function setMiningStats() {
-  store.miningGoldPerTick = store.getVocationCount('miner') / store.getGenerationRate('gold');
-  store.miningSpacePerTick = store.getVocationCount('tunneler') / store.getGenerationRate('space');
+  store.mining.goldPerTick = store.getVocationCount('miner') / store.generation.getRate('gold');
+  store.mining.spacePerTick = store.getVocationCount('tunneler') / store.generation.getRate('space');
 }
 
 function doProduce() {
-  action.produceEgg(store.getEggsPerTick());
-  action.produceKobold(store.getKoboldsPerTick());
-  action.produceScience(store.getRADSciencePerTick());
-  action.produceGold(store.getGoldPerTick());
-  action.produceSpace(store.getMiningSpacePerTick());
+  action.produceEgg(store.egg.getPerTick());
+  action.produceKobold(store.kobold.getPerTick());
+  action.produceScience(store.rad.getIchorPerTick());
+  action.produceGold(store.mining.getGoldPerTick());
+  action.produceSpace(store.mining.getSpacePerTick());
 }
 
 function showRAD() {
-  for (let item in store.techTree) {
-    if (!store.techTree[item].available) {
-      if (store.getRADScienceCount(0) > (store.techTree[item].cost)-10) {
-        store.techTree[item].available = true;
+  for (let item in store.tech.list) {
+    if (!store.tech.getAvailable(item)) {
+      if (store.rad.getIchorCount(0) > (store.tech.getCost(item))-10) {
+        store.tech.list[item].available = true;
       }
     }
   }

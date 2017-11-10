@@ -10,8 +10,8 @@ export default class KoboldBreeding extends Component {
   generateVoc = (type) => {
     let vocArr = [];
     let count = 0;
-    for (let voc in store.vocation) {
-      if (store.vocation[voc].type === type) {
+    for (let voc in store.vocation.list) {
+      if (store.vocation.list[voc].type === type) {
         count++;
         vocArr.push(<VocationButton key={count} name={voc}/>);
       }
@@ -23,7 +23,7 @@ export default class KoboldBreeding extends Component {
   };
 
   render() {
-    const hidden = store.getKoboldCount() < 2;
+    const hidden = store.kobold.getCount() < 2;
 
     const style = {
       padding: 16,
@@ -32,10 +32,10 @@ export default class KoboldBreeding extends Component {
       float: 'left'
     };
 
-    const eggCount = store.getEggCount();
-    const eggsPerSecond = (Math.round(store.getEggsPerTick() * 400) / 100);
-    const koboldCount = store.getKoboldCount();
-    const koboldsPerSecond = (Math.round(store.getKoboldsPerTick() * 400) / 100);
+    const eggCount = store.egg.getCount();
+    const eggsPerSecond = (Math.round((store.egg.getPerTick() - store.kobold.getPerTick())* 400) / 100);
+    const koboldCount = store.kobold.getCount();
+    const koboldsPerSecond = (Math.round(store.kobold.getPerTick() * 400) / 100);
 
     return (
       <Paper className="paper" elevation={4} style={style} hidden={hidden}>
@@ -44,7 +44,7 @@ export default class KoboldBreeding extends Component {
             Breeding Programme
           </Typography>
           <Typography type="body1" component="p">
-            Eggs Available: {eggCount} (+ {eggsPerSecond}/s)
+            Eggs Available: {eggCount} ({(eggsPerSecond >= 0) ? '+' : '-'} {Math.abs(eggsPerSecond)}/s)
           </Typography>
           <Typography type="body1" component="p">
             Kobolds Birthed: {koboldCount} (+ {koboldsPerSecond}/s)

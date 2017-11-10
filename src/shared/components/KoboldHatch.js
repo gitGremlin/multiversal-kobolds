@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import action from '../actions/KoboldActions';
 import store from '../stores/KoboldStore';
 import {IconButton, Tooltip} from 'material-ui/';
@@ -12,7 +12,7 @@ export default class KoboldHatch extends Component {
   };
 
   render() {
-    const disabled = store.getEggCount() === 0 || store.getMiningSpaceCount() === 0;
+    const disabled = store.egg.getCount() === 0 || store.mining.getSpaceCount() === 0;
 
     return (
       <div>

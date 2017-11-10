@@ -10,8 +10,8 @@ export default class KoboldMining extends Component {
   generateVoc = (type) => {
     let vocArr = [];
     let count = 0;
-    for (let voc in store.vocation) {
-      if (store.vocation[voc].type === type) {
+    for (let voc in store.vocation.list) {
+      if (store.vocation.list[voc].type === type) {
         count++;
         vocArr.push(<VocationButton key={count} name={voc}/>);
       }
@@ -23,7 +23,7 @@ export default class KoboldMining extends Component {
   };
 
   render() {
-    const hidden = store.getKoboldCount() < 50;
+    const hidden = store.kobold.getCount() < 50;
 
     const style = {
       padding: 16,
@@ -32,8 +32,8 @@ export default class KoboldMining extends Component {
       float: 'left'
     };
 
-    const goldPerSecond = (Math.round(store.getGoldPerTick() * 400) / 100);
-    const miningSpacePerSecond = (Math.round((store.getMiningSpacePerTick() - store.getKoboldsPerTick()) * 400) / 100);
+    const goldPerSecond = (Math.round(store.mining.getGoldPerTick() * 400) / 100);
+    const miningSpacePerSecond = (Math.round((store.mining.getSpacePerTick() - store.kobold.getPerTick()) * 400) / 100);
 
     return (
       <Paper className="paper" elevation={4} style={style} hidden={hidden}>
@@ -42,10 +42,10 @@ export default class KoboldMining extends Component {
             Mineral Acquisition
           </Typography>
           <Typography type="body1" component="p">
-            Gold Available: {store.getGoldCount(0)}/{store.getGoldCount(1)} (+ {goldPerSecond}/s)
+            Gold Available: {store.mining.getGoldCount(0)}/{store.mining.getGoldCount(1)} (+ {goldPerSecond}/s)
           </Typography>
           <Typography type="body1" component="p">
-            Space Available: {store.getMiningSpaceCount()} ({(miningSpacePerSecond >= 0) ? '+' : '-'} {Math.abs(miningSpacePerSecond)}/s)
+            Space Available: {store.mining.getSpaceCount()} ({(miningSpacePerSecond >= 0) ? '+' : '-'} {Math.abs(miningSpacePerSecond)}/s)
           </Typography>
 
           {[...this.generateVoc('mining')]}

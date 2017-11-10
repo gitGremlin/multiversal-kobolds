@@ -17,11 +17,11 @@ export default class KoboldRADButton extends Component {
         <Button
           raised
           color="primary"
-          disabled={store.getTechCost(this.props.name) > store.getRADScienceCount(0)}
+          disabled={store.tech.getCost(this.props.name) > store.rad.getIchorCount(0)}
           onClick={() => {
             this.handleTechOnClick(this.props.name);
           }}>
-          {store.techTree[this.props.name].name}
+          {store.tech.getName([this.props.name])}
         </Button>
       </div>
     );

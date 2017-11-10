@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import Index from '../shared/handlers/Index';
-import Copyright from '../shared/handlers/Copyright';
+import Footer from '../shared/handlers/Footer';
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 
 import materialThemeConfig from './theme/material.theme.config';
@@ -18,7 +18,7 @@ ReactDOM.render(
         <Index/>
       </div>
       <div>
-        <Copyright/>
+        <Footer/>
       </div>
     </div>
   </MuiThemeProvider>,
