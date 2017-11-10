@@ -7,9 +7,6 @@ import {Paper, Typography, IconButton, Button} from 'material-ui';
 
 @observer
 export default class KoboldRAD extends Component {
-  // handleOnClick = (type, number) => {
-  //   action.modifyRAD(type, number);
-  // };
 
   generateVoc = (type) => {
     let vocArr = [];
@@ -42,7 +39,7 @@ export default class KoboldRAD extends Component {
   };
 
   render() {
-    const hidden = store.getKoboldCount() < 2;
+    const hidden = store.getKoboldCount() < 10;
 
     const style = {
       padding: 16,

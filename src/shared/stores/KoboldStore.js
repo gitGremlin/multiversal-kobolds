@@ -15,7 +15,7 @@ class KoboldStore {
   @observable vocation = Vocation.list;
 
   // Breeding Control
-  @observable breedingVocationCount = [0, 0, 300];
+  @observable breedingVocationCount = [0, 0, 0];
   @observable breedingHatchProgress = 0;
 
   // RAD Control
@@ -28,7 +28,6 @@ class KoboldStore {
   @observable miningGoldCount = [0, 20];
   @observable miningGoldPerTick = 0.0;
   @observable miningSpaceCount = 100;
-  @observable miningSpaceAvailable = true;
   @observable miningSpacePerTick = 0.0;
 
   // Farming Control

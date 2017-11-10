@@ -23,7 +23,7 @@ export default class KoboldMining extends Component {
   };
 
   render() {
-    const hidden = store.getKoboldCount() < 2;
+    const hidden = store.getKoboldCount() < 50;
 
     const style = {
       padding: 16,

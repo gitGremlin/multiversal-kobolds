@@ -6,7 +6,7 @@ import tech from './KoboldTechActions';
 class KoboldActions {
   @action
   hatchKoboldManual() {
-    if (store.getEggCount() > 0 && store.miningSpaceCount > 0) {
+    if (store.getEggCount() > 0 && store.getMiningSpaceCount() > 0) {
       store.eggCount--;
       store.miningSpaceCount --;
       store.koboldCount++;
@@ -28,12 +28,13 @@ class KoboldActions {
 
   @action
   produceKobold(number) {
-    if (store.getEggCount() >= 1 && store.miningSpaceAvailable) {
+    if (store.getEggCount() >= 1 && store.getMiningSpaceCount() >= 1) {
       store.breedingHatchProgress += number;
-      if (store.getBreedingHatchProgress() >= 1) {
-        let koboldsToHatch = Math.min(store.getEggCount(), Math.floor(store.getBreedingHatchProgress()));
+      if (store.getBreedingHatchProgress() >=1) {
+        let koboldsToHatch = Math.min(store.getEggCount(), store.getMiningSpaceCount(), Math.floor(store.getBreedingHatchProgress()))
         store.koboldCount += koboldsToHatch;
         store.eggCount -= koboldsToHatch;
+        store.miningSpaceCount -= koboldsToHatch;
         store.breedingHatchProgress -= koboldsToHatch;
       }
     }
@@ -58,15 +59,7 @@ class KoboldActions {
 
   @action
   produceSpace(number) {
-    if (store.eggCount > 0) {
-      number -= store.getKoboldsPerTick();
-    }
-
-    if (store.getMiningSpaceCount() >= 0 && store.getEggCount() >= 0) {
-      const min = store.getMiningSpaceCount() + number;
-      store.miningSpaceCount += Math.min(number, min);
-    }
-    if (store.getMiningSpaceCount() < 0) store.miningSpaceCount = 0;
+    store.miningSpaceCount += number;
   }
 
   @action
