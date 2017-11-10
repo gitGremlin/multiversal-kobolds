@@ -19,7 +19,7 @@ class KoboldStore {
   }
 
   reset() {
-    console.log('store load time');
+    console.log('Store is being reset to default settings...');
 
     this.egg = new Egg;
     this.kobold = new Kobold;
@@ -33,7 +33,15 @@ class KoboldStore {
 
     this.tech = new Tech;
     this.generation = new Generation;
+
+    console.log('Store has been reset!');
   }
+
+  // Page Control
+  @observable dialog = {
+    open: false,
+    message: {}
+  };
 
   // Kobold Control
   @observable egg;
@@ -76,6 +84,10 @@ class KoboldStore {
         return this.mining.getVocationCount(1);
         break;
     }
+  }
+
+  getDialog() {
+    return this.dialog;
   }
 }
 

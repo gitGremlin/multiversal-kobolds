@@ -10,10 +10,10 @@ class KoboldTechActions {
         store.generation.list['female'] -= 1;
         break;
       case('library') :
-        store.enableResearch = true;
+        store.tech.enableResearch = true;
         break;
       case ('privateInvestigations') :
-        store.enableTooltips = true;
+        store.tech.enableTooltips = true;
         break;
       case('ichorStorage') :
         store.rad.ichorCount[1] += 100;

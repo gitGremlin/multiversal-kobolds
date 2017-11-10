@@ -1,17 +1,12 @@
 import React from 'react';
-import action from '../actions/KoboldActions';
 import {Typography, Button} from 'material-ui';
+import ResetButton from '../components/buttons/ResetButton'
 
 export default class Footer extends React.Component {
-
-  handleOnReset = () => {
-    action.resetStores();
-  };
-
   render() {
     return (
       <div>
-        <div id='copyrightContainer'>
+        <div id='footerContainer'>
           <Typography type="caption" gutterBottom align="left">
             From <a href='https://thenounproject.com/' target='_blank'>the Noun Project</a>:
             <br/>
@@ -21,14 +16,7 @@ export default class Footer extends React.Component {
           </Typography>
         </div>
         <br/>
-        <div>
-          <Button
-            raised
-            dense
-            onClick={this.handleOnReset}>
-            Reset Game
-          </Button>
-        </div>
+        <ResetButton/>
       </div>
     );
   }
