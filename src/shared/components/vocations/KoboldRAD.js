@@ -48,7 +48,7 @@ export default class KoboldRAD extends Component {
       float: 'left'
     };
 
-    const sciencePerSecond = store.rad.getIchorPerTick() * 4;
+    const ichorPerSecond = store.rad.getIchorPerTick() * 4;
 
 
     return (
@@ -58,7 +58,7 @@ export default class KoboldRAD extends Component {
         </Typography>
         <div>
           <Typography type="body1" component="p">
-            Research Ichor: {store.rad.getIchorCount(0)}/{store.rad.getIchorCount(1)} (+ {sciencePerSecond}/s)
+            Research Ichor: {store.rad.getIchorCount(0)}/{store.rad.getIchorCount(1)} (+ {ichorPerSecond}/s)
           </Typography>
 
           {[...this.generateVoc('rad')]}

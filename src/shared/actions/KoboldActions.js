@@ -46,7 +46,7 @@ class KoboldActions {
   }
 
   @action
-  produceScience(number) {
+  produceIchor(number) {
     if (store.rad.getIchorCount(0) < store.rad.getIchorCount(1)) {
       const min = store.rad.getIchorCount(1) - store.rad.getIchorCount(0);
       store.rad.ichorCount[0] += Math.min(number, min);

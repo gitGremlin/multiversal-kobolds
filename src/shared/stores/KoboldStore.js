@@ -40,7 +40,11 @@ class KoboldStore {
   // Page Control
   @observable dialog = {
     open: false,
-    message: {}
+    message: {},
+  };
+  @observable snackbar = {
+    open: false,
+    message: {},
   };
 
   // Kobold Control
@@ -60,8 +64,6 @@ class KoboldStore {
 
   // Tech Tree
   @observable tech;
-  @observable enableResearch = false;
-  @observable enableTooltips = false;
 
   getVocationCount(type) {
     switch (type) {
@@ -88,6 +90,10 @@ class KoboldStore {
 
   getDialog() {
     return this.dialog;
+  }
+
+  getSnackbar() {
+    return this.snackbar;
   }
 }
 

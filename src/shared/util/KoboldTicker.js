@@ -16,7 +16,7 @@ function setBreedingStats() {
 }
 
 function setRADStats() {
-  store.rad.ichorPerTick = store.getVocationCount('scientist') / store.generation.getRate('science');
+  store.rad.ichorPerTick = store.getVocationCount('scientist') / store.generation.getRate('ichor');
 }
 
 function setMiningStats() {
@@ -27,7 +27,7 @@ function setMiningStats() {
 function doProduce() {
   action.produceEgg(store.egg.getPerTick());
   action.produceKobold(store.kobold.getPerTick());
-  action.produceScience(store.rad.getIchorPerTick());
+  action.produceIchor(store.rad.getIchorPerTick());
   action.produceGold(store.mining.getGoldPerTick());
   action.produceSpace(store.mining.getSpacePerTick());
 }
