@@ -10,7 +10,6 @@ import ResetDialog from '../dialogs/Reset';
 export default class OptionsList extends Component {
 
   handleRequestReset = () => {
-    console.log("this was pressed");
     store.page.dialogControl.open = true;
   };
 
