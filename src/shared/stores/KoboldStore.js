@@ -12,6 +12,7 @@ import Fabrication from './vocation/KoboldFabricationStore';
 
 import Tech from './misc/KoboldTechStore';
 import Generation from './misc/KoboldGenerationStore';
+import Page from './misc/PageControl'
 
 class KoboldStore {
   constructor() {
@@ -33,19 +34,10 @@ class KoboldStore {
 
     this.tech = new Tech;
     this.generation = new Generation;
+    this.page = new Page;
 
     console.log('Store has been reset!');
   }
-
-  // Page Control
-  @observable dialog = {
-    open: false,
-    message: {},
-  };
-  @observable snackbar = {
-    open: false,
-    message: {},
-  };
 
   // Kobold Control
   @observable egg;
@@ -64,6 +56,9 @@ class KoboldStore {
 
   // Tech Tree
   @observable tech;
+
+  // Page Control
+  @observable page;
 
   getVocationCount(type) {
     switch (type) {
@@ -86,14 +81,6 @@ class KoboldStore {
         return this.mining.getVocationCount(1);
         break;
     }
-  }
-
-  getDialog() {
-    return this.dialog;
-  }
-
-  getSnackbar() {
-    return this.snackbar;
   }
 }
 

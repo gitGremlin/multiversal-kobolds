@@ -1,13 +1,13 @@
 import React from 'react';
-import {Typography, Button} from 'material-ui';
-import ResetButton from '../components/buttons/ResetButton';
+import {Typography} from 'material-ui';
+import OptionsButton from "../components/buttons/OptionsButton";
 
 export default class Footer extends React.Component {
   render() {
     return (
       <div>
         <div id='footerContainer'>
-          <ResetButton/>
+          <OptionsButton/>
           <br/>
           <Typography type="caption" gutterBottom align="left">
             From <a href='https://thenounproject.com/' target='_blank'>the Noun Project</a>:

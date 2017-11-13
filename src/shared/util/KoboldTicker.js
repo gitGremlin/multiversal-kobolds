@@ -43,8 +43,13 @@ function showRAD() {
 }
 
 export default function () {
+  // Pause Function
+  if(store.page.getDialog().open || store.page.getDrawer().open) return;
+
+  // Counter
   ticksProduced++;
 
+  // Main Ticker Function
   setBreedingStats();
   setRADStats();
   setMiningStats();
