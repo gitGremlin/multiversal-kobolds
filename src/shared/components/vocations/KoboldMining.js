@@ -1,26 +1,11 @@
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
 import store from '../../stores/KoboldStore';
-import VocationButton from '../buttons/VocationButton';
+import VocationTable from '../tables/KoboldVocationTable';
 import {Paper, Typography} from 'material-ui';
 
 @observer
 export default class KoboldMining extends Component {
-
-  generateVoc = (type) => {
-    let vocArr = [];
-    let count = 0;
-    for (let voc in store.vocation.list) {
-      if (store.vocation.list[voc].type === type) {
-        count++;
-        vocArr.push(<VocationButton key={count} name={voc}/>);
-      }
-    }
-    if (vocArr.length !== 0) {
-      vocArr.splice(0, 0, <hr key={0}/>);
-    }
-    return vocArr;
-  };
 
   render() {
     const hidden = store.kobold.getCount() < 50;
@@ -28,7 +13,7 @@ export default class KoboldMining extends Component {
     const style = {
       padding: 16,
       margin: 10,
-      width: 300,
+      minWidth: 300,
       float: 'left'
     };
 
@@ -48,7 +33,7 @@ export default class KoboldMining extends Component {
             Space Available: {store.mining.getSpaceCount()} ({(miningSpacePerSecond >= 0) ? '+' : '-'} {Math.abs(miningSpacePerSecond)}/s)
           </Typography>
 
-          {[...this.generateVoc('mining')]}
+          <VocationTable name='mining'/>
 
         </div>
       </Paper>

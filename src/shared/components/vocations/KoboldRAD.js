@@ -1,27 +1,12 @@
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
 import store from '../../stores/KoboldStore';
-import VocationButton from '../buttons/VocationButton';
+import VocationTable from '../tables/KoboldVocationTable';
 import KoboldRADButton from '../buttons/RADButton';
 import {Paper, Typography, IconButton, Button} from 'material-ui';
 
 @observer
 export default class KoboldRAD extends Component {
-
-  generateVoc = (type) => {
-    let vocArr = [];
-    let count = 0;
-    for (let voc in store.vocation.list) {
-      if (store.vocation.list[voc].type === type) {
-        count++;
-        vocArr.push(<VocationButton key={count} name={voc}/>);
-      }
-    }
-    if (vocArr.length !== 0) {
-      vocArr.splice(0, 0, <hr key={0}/>);
-    }
-    return vocArr;
-  };
 
   generateTech = () => {
     let techsArr = [];
@@ -44,7 +29,7 @@ export default class KoboldRAD extends Component {
     const style = {
       padding: 16,
       margin: 10,
-      width: 300,
+      minWidth: 300,
       float: 'left'
     };
 
@@ -61,7 +46,7 @@ export default class KoboldRAD extends Component {
             Research Ichor: {store.rad.getIchorCount(0)}/{store.rad.getIchorCount(1)} (+ {ichorPerSecond}/s)
           </Typography>
 
-          {[...this.generateVoc('rad')]}
+          <VocationTable name='rad'/>
           {[...this.generateTech()]}
 
         </div>

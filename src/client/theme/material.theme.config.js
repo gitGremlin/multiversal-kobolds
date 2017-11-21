@@ -7,5 +7,26 @@ const {} = Styles;
 export default {
   palette: {
     type: 'dark'
+  },
+  overrides: {
+    MuiButton: {
+      dense: {
+        minWidth: 0,
+      },
+    },
+    MuiTableRow: {
+      root: {
+        width: '100%',
+      }
+    },
+    MuiTableCell: {
+      numeric: {
+        textAlign: 'center',
+        minWidth: 30,
+      },
+      paddingDefault: {
+        padding: 3,
+      },
+    },
   }
 };

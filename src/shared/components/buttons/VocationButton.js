@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
-import {Typography, Button} from 'material-ui';
-// import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
+import {Button, Typography} from 'material-ui';
+import {TableRow, TableCell} from 'material-ui/Table';
 import action from '../../actions/KoboldActions';
 import store from '../../stores/KoboldStore';
 
@@ -12,33 +12,96 @@ export default class KoboldVocationButton extends Component {
     action.modifyVocation(type, number);
   };
 
+  checkReduceDisabled = (count, limit) => {
+    return count < limit;
+  };
+
+  checkAddDisabled = (limit) => {
+    return (store.kobold.getCount() - store.kobold.getEmployedCount()) < limit;
+  };
+
   render() {
 
     const vocationPopCount = store.getVocationCount(this.props.name);
 
-    const addDisabled = (store.kobold.getEmployedCount() >= store.kobold.getCount());
-    const reduceDisabledPop = vocationPopCount === 0;
-
     return (
-      <Typography type="body1" component="p">
-        <Button
-          dense
-          disabled={reduceDisabledPop}
-          onClick={() => {
-            this.handleOnClick(this.props.name, -1);
-          }}>
-          -1
-        </Button>
-        <Button
-          dense
-          disabled={addDisabled}
-          onClick={() => {
-            this.handleOnClick(this.props.name, +1);
-          }}>
-          +1
-        </Button>
-        {store.vocation.list[this.props.name].name}: {vocationPopCount}
-      </Typography>
+      <TableRow>
+        <TableCell>
+          <Typography type="button">
+            {store.vocation.list[this.props.name].name}:
+          </Typography>
+        </TableCell>
+        <TableCell
+          hidden={store.kobold.getCount() < 500}>
+          <Button
+            dense
+            disabled={this.checkReduceDisabled(vocationPopCount, 100)}
+            onClick={() => {
+              this.handleOnClick(this.props.name, -100);
+            }}>
+            -100
+          </Button>
+        </TableCell>
+        <TableCell
+          hidden={store.kobold.getCount() < 50}>
+          <Button
+            dense
+            disabled={this.checkReduceDisabled(vocationPopCount, 10)}
+            onClick={() => {
+              this.handleOnClick(this.props.name, -10);
+            }}>
+            -10
+          </Button>
+        </TableCell>
+        <TableCell>
+          <Button
+            dense
+            disabled={this.checkReduceDisabled(vocationPopCount, 1)}
+            onClick={() => {
+              this.handleOnClick(this.props.name, -1);
+            }}>
+            &lt;
+          </Button>
+        </TableCell>
+        <TableCell numeric>
+          <Typography type="subheading">
+            {vocationPopCount}
+          </Typography>
+        </TableCell>
+        <TableCell style={{ padding: 0, textAlign: 'right' }}>
+          <Button
+            dense
+            disabled={this.checkAddDisabled(1)}
+            onClick={() => {
+              this.handleOnClick(this.props.name, +1);
+            }}>
+            &gt;
+          </Button>
+        </TableCell>
+        <TableCell
+          hidden={store.kobold.getCount() < 50}>
+          <Button
+            dense
+            disabled={this.checkAddDisabled(10)}
+            onClick={() => {
+              this.handleOnClick(this.props.name, +10);
+            }}>
+            +10
+          </Button>
+        </TableCell>
+        <TableCell
+          style={{ padding: 0, textAlign: 'right' }}
+          hidden={store.kobold.getCount() < 500}>
+          <Button
+            dense
+            disabled={this.checkAddDisabled(100)}
+            onClick={() => {
+              this.handleOnClick(this.props.name, +100);
+            }}>
+            +100
+          </Button>
+        </TableCell>
+      </TableRow>
     );
   }
 }
