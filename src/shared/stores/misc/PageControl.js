@@ -2,18 +2,19 @@ import {observable} from 'mobx';
 
 export default class PageControl {
 
-  @observable dialogControl = {
+  @observable dialogControlReset = {
     open: false,
   };
   @observable snackbarControl = {
     open: false,
+    message: '',
   };
   @observable drawerControl = {
     open: false,
   };
 
-  getDialog() {
-    return this.dialogControl;
+  getDialogReset() {
+    return this.dialogControlReset;
   }
 
   getSnackbar() {

@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
-import {Typography, IconButton} from 'material-ui';
-import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
+import {Typography, Button} from 'material-ui';
+// import {AddBox, IndeterminateCheckBox} from 'material-ui-icons/';
 import action from '../../actions/KoboldActions';
 import store from '../../stores/KoboldStore';
 
@@ -21,20 +21,22 @@ export default class KoboldVocationButton extends Component {
 
     return (
       <Typography type="body1" component="p">
-        <IconButton
+        <Button
+          dense
           disabled={reduceDisabledPop}
           onClick={() => {
             this.handleOnClick(this.props.name, -1);
           }}>
-          <IndeterminateCheckBox/>
-        </IconButton>
-        <IconButton
+          -1
+        </Button>
+        <Button
+          dense
           disabled={addDisabled}
           onClick={() => {
             this.handleOnClick(this.props.name, +1);
           }}>
-          <AddBox/>
-        </IconButton>
+          +1
+        </Button>
         {store.vocation.list[this.props.name].name}: {vocationPopCount}
       </Typography>
     );

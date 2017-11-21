@@ -8,7 +8,7 @@ class KoboldActions {
   hatchKoboldManual() {
     if (store.egg.getCount() > 0 && store.mining.getSpaceCount() > 0) {
       store.egg.count--;
-      store.mining.spaceCount --;
+      store.mining.spaceCount--;
       store.kobold.count++;
     }
   }
@@ -16,6 +16,12 @@ class KoboldActions {
   @action
   resetStores() {
     store.reset();
+  }
+
+  @action
+  openSnackbar(message) {
+    store.page.snackbarControl.open = true;
+    store.page.snackbarControl.message = message;
   }
 
   @action
@@ -35,8 +41,8 @@ class KoboldActions {
   produceKobold(number) {
     if (store.egg.getCount() >= 1 && store.mining.getSpaceCount() >= 1) {
       store.breeding.hatchProgress += number;
-      if (store.breeding.getHatchProgress() >=1) {
-        let koboldsToHatch = Math.min(store.egg.getCount(), store.mining.getSpaceCount(), Math.floor(store.breeding.getHatchProgress()))
+      if (store.breeding.getHatchProgress() >= 1) {
+        let koboldsToHatch = Math.min(store.egg.getCount(), store.mining.getSpaceCount(), Math.floor(store.breeding.getHatchProgress()));
         store.kobold.count += koboldsToHatch;
         store.egg.count -= koboldsToHatch;
         store.mining.spaceCount -= koboldsToHatch;

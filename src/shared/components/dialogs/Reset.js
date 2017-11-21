@@ -9,9 +9,10 @@ import store from '../../stores/KoboldStore';
 export default class ResetButton extends Component {
 
   handleRequestClose = (boolean) => {
-    store.page.dialogControl.open = false;
+    store.page.dialogControlReset.open = false;
     if (boolean) {
       action.resetStores();
+      action.openSnackbar('GAME RESET!');
     }
   };
 
@@ -24,7 +25,7 @@ export default class ResetButton extends Component {
         onEscapeKeyUp={() => {
           this.handleRequestClose(false);
         }}
-        open={store.page.getDialog().open}>
+        open={store.page.getDialogReset().open}>
         <DialogTitle>{"Really reset your game to default?"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -36,7 +37,7 @@ export default class ResetButton extends Component {
             onClick={() => {
               this.handleRequestClose(false);
             }}
-            color="primary"
+            color="accent"
             autoFocus>
             Nevermind
           </Button>
@@ -44,7 +45,7 @@ export default class ResetButton extends Component {
             onClick={() => {
               this.handleRequestClose(true);
             }}
-            color="primary">
+            color="accent">
             Reset my game!
           </Button>
         </DialogActions>

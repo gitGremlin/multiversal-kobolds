@@ -44,7 +44,7 @@ function showRAD() {
 
 export default function () {
   // Pause Function
-  if(store.page.getDialog().open || store.page.getDrawer().open) return;
+  if(store.page.getDialogReset().open || store.page.getDrawer().open) return;
 
   // Counter
   ticksProduced++;
