@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {List} from 'material-ui';
 import {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
 import store from '../../stores/KoboldStore';
-import RefreshIcon from 'material-ui-icons/Refresh';
+import {FreeBreakfast, Refresh, HelpOutline} from 'material-ui-icons/'
 import ResetDialog from '../dialogs/Reset';
 
 @observer
@@ -20,10 +20,30 @@ export default class OptionsList extends Component {
           <ListItem
             button
             onClick={() => {
+              this.handleRequestAbout();
+            }}>
+            <ListItemIcon>
+              <HelpOutline/>
+            </ListItemIcon>
+            <ListItemText primary="About & FAQs"/>
+          </ListItem>
+          <ListItem
+            button
+            onClick={() => {
+              this.handleRequestTip();
+            }}>
+            <ListItemIcon>
+              <FreeBreakfast/>
+            </ListItemIcon>
+            <ListItemText primary="Pay for my next Coffee"/>
+          </ListItem>
+          <ListItem
+            button
+            onClick={() => {
               this.handleRequestReset();
             }}>
             <ListItemIcon>
-              <RefreshIcon/>
+              <Refresh/>
             </ListItemIcon>
             <ListItemText primary="Restart Game"/>
           </ListItem>

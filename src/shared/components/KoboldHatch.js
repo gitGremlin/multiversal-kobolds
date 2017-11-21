@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import action from '../actions/KoboldActions';
 import store from '../stores/KoboldStore';
 import {IconButton, Tooltip} from 'material-ui/';
-import PersonAddIcon from 'material-ui-icons/PersonAdd';
+import {PersonAdd} from 'material-ui-icons/';
 
 @observer
 export default class KoboldHatch extends Component {
@@ -23,7 +23,7 @@ export default class KoboldHatch extends Component {
           <IconButton
             disabled={disabled}
             onClick={this.handleOnHatchEgg}>
-            <PersonAddIcon/>
+            <PersonAdd/>
           </IconButton>
         </Tooltip>
       </div>
