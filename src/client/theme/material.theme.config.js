@@ -31,6 +31,12 @@ export default {
         padding: 3,
       },
     },
+    // MuiTooltip: {
+    //   tooltip: {
+    //     background: 'lightgrey',
+    //     color: 'black',
+    //   },
+    // },
 
   },
 };

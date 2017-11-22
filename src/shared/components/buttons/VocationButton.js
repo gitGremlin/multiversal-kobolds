@@ -27,7 +27,8 @@ export default class KoboldVocationButton extends Component {
     return (
       <TableRow>
         <TableCell>
-          <Tooltip title={store.tech.getEnableTooltips() ? store.vocation.list[this.props.name].description : "Dunno what this job is yet, boss - research 'private investigations'"}>
+          <Tooltip
+            title={store.tech.getEnableTooltips() ? store.vocation.list[this.props.name].description : "Dunno what this job is yet, boss - research 'private investigations'"}>
             <Typography type="button">
               {store.vocation.list[this.props.name].name}:
             </Typography>
