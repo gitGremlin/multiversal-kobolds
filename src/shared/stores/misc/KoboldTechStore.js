@@ -7,7 +7,7 @@ export default class KoboldTechStore {
   @observable list = {
     husbandry: {
       name: 'Kobold Husbandry',
-      description: 'improves the ratio of males-to-females required for optimal breeding',
+      description: 'Improves the ratio of males-to-females required for optimal breeding',
       cost: 30,
       researched: false,
       available: false,
@@ -15,7 +15,7 @@ export default class KoboldTechStore {
     },
     library: {
       name: 'Library Vault',
-      description: 'we will be able to view previously researched technology',
+      description: 'We will be able to view previously researched technology',
       cost: 50,
       researched: false,
       available: false,
@@ -23,7 +23,7 @@ export default class KoboldTechStore {
     },
     privateInvestigations: {
       name: 'Private Investigations',
-      description: 'lets us view tooltips on everything, yip yip!',
+      description: 'Lets us view tooltips on everything',
       cost: 80,
       researched: false,
       available: false,
@@ -31,7 +31,7 @@ export default class KoboldTechStore {
     },
     ichorStorage: {
       name: 'Ichor Storage',
-      description: 'construction of Ichor Storage will be available!',
+      description: 'Construction of Ichor Storage will be available',
       cost: 100,
       researched: false,
       available: false,
@@ -39,7 +39,7 @@ export default class KoboldTechStore {
     },
     recordKeeping: {
       name: 'Record Keeping',
-      description: 'allows us to manually save the game, whatever that means...',
+      description: 'Allows us to manually save the game, whatever that means',
       cost: 300,
       researched: false,
       available: false,
@@ -77,5 +77,9 @@ export default class KoboldTechStore {
 
   getEnableTooltips() {
     return this.enableTooltips;
+  }
+
+  getDefaultTooltip() {
+
   }
 }

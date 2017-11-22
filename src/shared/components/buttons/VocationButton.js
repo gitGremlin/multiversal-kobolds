@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react';
 import React, {Component} from 'react';
-import {Button, Typography} from 'material-ui';
+import {Button, Typography, Tooltip} from 'material-ui';
 import {TableRow, TableCell} from 'material-ui/Table';
 import action from '../../actions/KoboldActions';
 import store from '../../stores/KoboldStore';
@@ -27,9 +27,11 @@ export default class KoboldVocationButton extends Component {
     return (
       <TableRow>
         <TableCell>
-          <Typography type="button">
-            {store.vocation.list[this.props.name].name}:
-          </Typography>
+          <Tooltip title={store.tech.getEnableTooltips() ? store.vocation.list[this.props.name].description : "Dunno what this job is yet, boss - research 'private investigations'"}>
+            <Typography type="button">
+              {store.vocation.list[this.props.name].name}:
+            </Typography>
+          </Tooltip>
         </TableCell>
         <TableCell
           hidden={store.kobold.getCount() < 500}>

@@ -6,44 +6,43 @@ export default class KoboldVocationStore {
     male: {
       name: 'Males',
       type: 'breeding',
-      description: '',
+      description: 'Put these together with females to make more eggs',
     },
     female: {
       name: 'Females',
       type: 'breeding',
-      description: '',
+      description: 'Lays eggs after dancing with males',
     },
     wetnurse: {
       name: 'Wet Nurses',
       type: 'breeding',
-      description: '',
+      description: 'Looks after eggs and cares for the young',
     },
     scientist: {
       name: 'Ichor Enthusiasts',
       type: 'rad',
-      description: '',
+      description: 'Really enthusiastic about ichor',
     },
     miner: {
       name: 'Miner',
       type: 'mining',
-      description: '',
+      description: 'Digs out gold from the mines under our lair',
     },
     tunneler: {
       name: 'Tunneler',
       type: 'mining',
-      description: '',
+      description: 'Makes more living space, yip yip',
     },
     farmer: {
       name: 'Cat Farmer',
       type: 'farming',
-      description: '',
+      description: 'Cares for cats on the cat farm',
     },
     butcher: {
       name: 'Butcher',
       type: 'farming',
-      description: '',
+      description: 'Harvests the cats for leather and meat',
     },
   };
 
 }
-

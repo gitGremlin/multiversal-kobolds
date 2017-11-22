@@ -5,9 +5,12 @@ import Styles from '../styles/main.scss';
 const {} = Styles;
 
 export default {
+  // Palette choice
   palette: {
     type: 'dark'
   },
+
+  // Material UI theme overrides
   overrides: {
     MuiButton: {
       dense: {
@@ -28,5 +31,6 @@ export default {
         padding: 3,
       },
     },
-  }
+
+  },
 };

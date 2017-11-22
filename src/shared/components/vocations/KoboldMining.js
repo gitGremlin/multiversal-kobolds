@@ -8,7 +8,7 @@ import {Paper, Typography} from 'material-ui';
 export default class KoboldMining extends Component {
 
   render() {
-    const hidden = store.kobold.getCount() < 50;
+    const hidden = store.kobold.getCount() < 75;
 
     const style = {
       padding: 16,
